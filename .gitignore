@@ -1,0 +1,5 @@
+*.map
+*.DS_Store
+assets/copyDeck
+assets/font
+/mockups
