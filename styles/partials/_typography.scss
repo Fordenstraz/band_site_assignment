@@ -1,0 +1,103 @@
+// FONTS
+@font-face {
+	font-family: "avenir-next", sans-serif;
+	font-weight: normal;
+	src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf) format("opentype"),
+		url(../../assets/fonts/alt-files/AvenirNextLTPro.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: "avenir-next", sans-serif;
+	font-weight: 600;
+	src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf) format("opentype"),
+		url(../../assets/fonts/alt-files/AvenirNextLTProDemi.ttf)
+			format("truetype");
+}
+
+@font-face {
+	font-family: "avenir-next", sans-serif;
+	font-weight: bold;
+	src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf) format("opentype"),
+		url(../../assets/fonts/alt-files/AvenirNextLTProBold.ttf)
+			format("truetype");
+}
+
+// DESKTOP TYPOGRAPHY
+
+%page-header {
+	font-family: "avenir-next";
+	font-size: 3.75rem;
+	font-weight: 700;
+	line-height: 4.25rem;
+}
+
+%section-header {
+	font-family: "avenir-next";
+	font-size: 2.25rem;
+	font-weight: 700;
+	line-height: 2.75rem;
+}
+
+%subheader {
+	font-family: "avenir-next";
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 2rem;
+}
+
+%body-copy {
+	font-family: "avenir-reg";
+	font-size: 0.875rem;
+	font-weight: 400;
+	line-height: 1.375rem;
+}
+
+%footer-copy {
+	@extend %body-copy;
+	line-height: 1.25rem;
+}
+
+%other-text {
+	font-family: "avenir-next";
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 1.25rem;
+}
+
+// MOBILE TYPOGRAPHY
+
+%mobile_page-header {
+	font-family: "avenir-next";
+	font-size: 1.55rem;
+	font-weight: 700;
+	line-height: 2rem;
+}
+
+%mobile_section-header {
+	@extend %mobile-page-header;
+}
+
+%mobile_subheader {
+	font-family: "avenir-next";
+	font-size: 0.875rem;
+	font-weight: 600;
+	line-height: 1.375rem;
+}
+
+%mobile_body-copy {
+	font-family: "avenir-next";
+	font-size: 0.813;
+	font-weight: 400;
+	line-height: 1.125;
+}
+
+%mobile_footer-copy {
+	@extend %mobile_body-copy;
+}
+
+%mobile_other-text {
+	font-family: "avenir-next";
+	font-size: 0.625rem;
+	font-weight: 700;
+	line-height: 1.25rem;
+}
