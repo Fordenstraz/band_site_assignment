@@ -1,5 +1,5 @@
-@use "./partials/colours";
-@use "./partials/typography";
+@use "./colours";
+@use "./typography";
 
 body {
 	@extend %body-copy;

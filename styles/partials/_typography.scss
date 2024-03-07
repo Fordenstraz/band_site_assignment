@@ -1,24 +1,26 @@
 // FONTS
 @font-face {
-	font-family: "avenir-next", sans-serif;
-	font-weight: normal;
-	src: url(../../assets/fonts/AvenirNextLTPro-Regular.otf) format("opentype"),
-		url(../../assets/fonts/alt-files/AvenirNextLTPro.ttf) format("truetype");
-}
-
-@font-face {
-	font-family: "avenir-next", sans-serif;
-	font-weight: 600;
-	src: url(../../assets/fonts/AvenirNextLTPro-Demi.otf) format("opentype"),
-		url(../../assets/fonts/alt-files/AvenirNextLTProDemi.ttf)
+	font-family: "avenir-next";
+	font-weight: 400;
+	src: url("../../assets/fonts/AvenirNextLTPro-Regular.otf")
+			format("opentype"),
+		url("../../assets/fonts/alt-files/AvenirNextLTPro.ttf")
 			format("truetype");
 }
 
 @font-face {
-	font-family: "avenir-next", sans-serif;
-	font-weight: bold;
-	src: url(../../assets/fonts/AvenirNextLTPro-Bold.otf) format("opentype"),
-		url(../../assets/fonts/alt-files/AvenirNextLTProBold.ttf)
+	font-family: "avenir-next";
+	font-weight: 600;
+	src: url("../../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"),
+		url("../../assets/fonts/alt-files/AvenirNextLTProDemi.ttf")
+			format("truetype");
+}
+
+@font-face {
+	font-family: "avenir-next";
+	font-weight: 700;
+	src: url("../../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype"),
+		url("../../assets/fonts/alt-files/AvenirNextLTProBold.ttf")
 			format("truetype");
 }
 
@@ -46,7 +48,7 @@
 }
 
 %body-copy {
-	font-family: "avenir-reg";
+	font-family: "avenir-next";
 	font-size: 0.875rem;
 	font-weight: 400;
 	line-height: 1.375rem;
@@ -74,7 +76,7 @@
 }
 
 %mobile_section-header {
-	@extend %mobile-page-header;
+	@extend %mobile_page-header;
 }
 
 %mobile_subheader {
