@@ -18,13 +18,15 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.375rem;
+  color: #323232;
 }
 
-.nav__header, .hero__header {
+.nav__header, .hero__header, .about__header {
   font-family: "avenir-next";
   font-size: 1.55rem;
   font-weight: 700;
   line-height: 2rem;
+  color: #323232;
 }
 
 .nav__division {
@@ -32,11 +34,11 @@ body {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.375rem;
+  color: #323232;
 }
 
 body {
   margin: 0;
-  list-style-type: none;
   box-sizing: border-box;
 }
 
@@ -78,27 +80,45 @@ body {
   background-position: center;
   height: 11.75rem;
 }
-.hero__container {
+.hero__overlay {
   display: flex;
   align-items: center;
+  background-color: rgba(51, 51, 51, 0.5019607843);
   width: 100%;
   height: 100%;
-  background-color: rgba(51, 51, 51, 0.5019607843);
 }
 .hero__header {
   margin-left: 1rem;
   color: #ffffff;
 }
 
-main {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5%;
 }
-
+.about__container {
+  display: flex;
+  width: 100%;
+}
+.about__header {
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
 .about__image {
   width: 90vw;
+  height: 8rem;
   margin: 0;
+}
+.about__caption, .about__attribution {
+  align-self: baseline;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.about__attribution {
+  align-self: flex-start;
+  margin: 0 0 0.75rem;
 }
 
 .gallery__photo {
