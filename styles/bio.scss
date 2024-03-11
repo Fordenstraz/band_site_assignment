@@ -1,4 +1,86 @@
-@use "./partials/global";
 @use "./partials/colours";
 @use "./partials/typography";
 @use "./partials/mixins";
+
+body {
+	@extend %body-copy;
+	margin: 0;
+	list-style-type: none;
+	box-sizing: border-box;
+}
+
+.nav {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: colours.$primary_dark;
+
+	&__header {
+		@extend %mobile__page-header;
+		font-weight: 400;
+		max-width: 120px;
+		max-height: 20px;
+		color: colours.$primary_light;
+	}
+
+	&__divider {
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__division {
+		display: flex;
+		justify-content: center;
+		width: 50vw;
+		@extend %mobile__subheader;
+
+		&-link {
+			text-decoration: none;
+			color: colours.$secondary_med;
+		}
+
+		&--active {
+			font-weight: 700;
+			color: colours.$primary_light;
+			padding-bottom: 0.5rem;
+			border-bottom: 0.25rem solid colours.$primary_light;
+		}
+	}
+}
+
+.hero {
+	background-image: url(../../assets/images/hero-bio.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 11.75rem;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		background-color: colours.$primary_dark--overlay;
+	}
+
+	&__header {
+		margin-left: 1rem;
+		@extend %mobile__section-header;
+		color: colours.$primary_light;
+	}
+}
+
+main {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.about__image {
+	width: 90vw;
+	margin: 0;
+}
+
+.gallery__photo {
+	width: 90vw;
+	margin: 0;
+}

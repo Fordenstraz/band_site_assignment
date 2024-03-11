@@ -20,8 +20,88 @@ body {
   line-height: 1.375rem;
 }
 
+.nav__header, .hero__header {
+  font-family: "avenir-next";
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+.nav__division {
+  font-family: "avenir-next";
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.375rem;
+}
+
 body {
   margin: 0;
-  text-decoration: none;
   list-style-type: none;
+  box-sizing: border-box;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #323232;
+}
+.nav__header {
+  font-weight: 400;
+  max-width: 120px;
+  max-height: 20px;
+  color: #ffffff;
+}
+.nav__divider {
+  display: flex;
+  flex-direction: row;
+}
+.nav__division {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+}
+.nav__division-link {
+  text-decoration: none;
+  color: #e1e1e1;
+}
+.nav__division--active {
+  font-weight: 700;
+  color: #ffffff;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.25rem solid #ffffff;
+}
+
+.hero {
+  background-image: url(../../assets/images/hero-bio.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 11.75rem;
+}
+.hero__container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.5019607843);
+}
+.hero__header {
+  margin-left: 1rem;
+  color: #ffffff;
+}
+
+main {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.about__image {
+  width: 90vw;
+  margin: 0;
+}
+
+.gallery__photo {
+  width: 90vw;
+  margin: 0;
 }
