@@ -34,6 +34,7 @@ body {
 		@extend %mobile__subheader;
 
 		&-link {
+			font-weight: 400;
 			text-decoration: none;
 			color: colours.$secondary_med;
 		}
@@ -101,6 +102,19 @@ body {
 		@extend .about__caption;
 		align-self: flex-start;
 		margin: 0 0 0.75rem;
+	}
+}
+
+.bio {
+	padding: 0 10% 0 5%;
+
+	&__header {
+		@extend %mobile__subheader;
+		font-size: 0.95rem;
+	}
+
+	&__copy {
+		@extend %mobile__body-copy;
 	}
 }
 
