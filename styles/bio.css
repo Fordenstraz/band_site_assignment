@@ -112,8 +112,11 @@ body {
   margin: 1.5rem 0 0.5rem;
 }
 .about__image {
+  background-image: url(../assets/images/band.jpg);
+  background-size: cover;
+  background-position: bottom;
   width: 90vw;
-  height: 8rem;
+  height: 9.5rem;
   margin: 0;
 }
 .about__caption, .about__attribution {

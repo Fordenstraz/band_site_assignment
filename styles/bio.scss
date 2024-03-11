@@ -87,8 +87,11 @@ body {
 	}
 
 	&__image {
+		background-image: url(../assets/images/band.jpg);
+		background-size: cover;
+		background-position: bottom;
 		width: 90vw;
-		height: 8rem;
+		height: 9.5rem;
 		margin: 0;
 	}
 
