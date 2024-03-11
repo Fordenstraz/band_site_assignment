@@ -18,23 +18,20 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.375rem;
-  color: #323232;
 }
 
-.nav__header, .hero__header, .about__header {
+.nav__header, .hero__header, .about__header, .gallery__heading, .footer__heading, .footer__logo {
   font-family: "avenir-next";
   font-size: 1.55rem;
   font-weight: 700;
   line-height: 2rem;
-  color: #323232;
 }
 
-.nav__division, .bio__header {
+.nav__division, .bio__header, .contact__header {
   font-family: "avenir-next";
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.375rem;
-  color: #323232;
 }
 
 .bio__copy {
@@ -42,7 +39,6 @@ body {
   font-size: 0.813;
   font-weight: 400;
   line-height: 1.125;
-  color: #323232;
 }
 
 body {
@@ -55,12 +51,12 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #323232;
+  color: #ffffff;
 }
-.nav__header {
+.nav__header, .footer__logo {
   font-weight: 400;
   max-width: 120px;
   max-height: 20px;
-  color: #ffffff;
 }
 .nav__divider {
   display: flex;
@@ -78,7 +74,6 @@ body {
 }
 .nav__division--active {
   font-weight: 700;
-  color: #ffffff;
   padding-bottom: 0.5rem;
   border-bottom: 0.25rem solid #ffffff;
 }
@@ -105,7 +100,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 5%;
+  padding: 0 1rem;
+  color: #323232;
 }
 .about__container {
   display: flex;
@@ -127,16 +123,55 @@ body {
 }
 .about__attribution {
   align-self: flex-start;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
 }
 
 .bio {
-  padding: 0 10% 0 5%;
+  padding: 0 2rem 0 1rem;
+  color: #323232;
 }
 .bio__header {
   font-size: 0.95rem;
 }
+.bio__copy {
+  margin-bottom: 1rem;
+}
+
+.gallery {
+  padding: 0 1rem;
+}
+.gallery__heading {
+  margin: 2.5rem 0 0.5rem;
+  color: #323232;
+}
 .gallery__photo {
   width: 90vw;
-  margin: 0;
+  margin: 0 0 0.5rem;
+}
+
+.footer {
+  background-color: #323232;
+  padding: 1rem;
+  color: #ffffff;
+}
+.footer__social, .footer__social-icon, .footer__social-link {
+  height: 1.5rem;
+}
+.footer__social-link {
+  display: inline-block;
+  margin-right: 2rem;
+}
+.footer__logo {
+  margin-top: 3rem;
+}
+.footer__copyright {
+  font-size: 0.7rem;
+}
+
+.contact__header {
+  margin: 2rem 0 1rem;
+}
+.contact__mailto {
+  text-decoration: none;
+  color: #ffffff;
 }

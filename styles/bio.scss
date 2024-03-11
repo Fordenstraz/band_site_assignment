@@ -1,4 +1,4 @@
-@use "./partials/colours";
+@use "./partials/variables";
 @use "./partials/typography";
 @use "./partials/mixins";
 
@@ -12,14 +12,14 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: colours.$primary_dark;
+	background-color: variables.$primary_dark;
+	color: variables.$primary_light;
 
 	&__header {
 		@extend %mobile__page-header;
 		font-weight: 400;
 		max-width: 120px;
 		max-height: 20px;
-		color: colours.$primary_light;
 	}
 
 	&__divider {
@@ -36,14 +36,13 @@ body {
 		&-link {
 			font-weight: 400;
 			text-decoration: none;
-			color: colours.$secondary_med;
+			color: variables.$secondary_med;
 		}
 
 		&--active {
 			font-weight: 700;
-			color: colours.$primary_light;
 			padding-bottom: 0.5rem;
-			border-bottom: 0.25rem solid colours.$primary_light;
+			border-bottom: 0.25rem solid variables.$primary_light;
 		}
 	}
 }
@@ -57,15 +56,15 @@ body {
 	&__overlay {
 		display: flex;
 		align-items: center;
-		background-color: colours.$primary_dark--overlay;
+		background-color: variables.$primary_dark--overlay;
 		width: 100%;
 		height: 100%;
 	}
 
 	&__header {
 		margin-left: 1rem;
-		@extend %mobile__section-header;
-		color: colours.$primary_light;
+		@extend %mobile__page-header;
+		color: variables.$primary_light;
 	}
 }
 
@@ -73,7 +72,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 5%;
+	padding: 0 1rem;
+	color: variables.$primary_dark;
 
 	&__container {
 		display: flex;
@@ -81,7 +81,7 @@ body {
 	}
 
 	&__header {
-		@extend %mobile__section-header;
+		@extend %mobile__page-header;
 		font-weight: 600;
 		margin: 1.5rem 0 0.5rem;
 	}
@@ -101,12 +101,13 @@ body {
 	&__attribution {
 		@extend .about__caption;
 		align-self: flex-start;
-		margin: 0 0 0.75rem;
+		margin: 0 0 0.5rem;
 	}
 }
 
 .bio {
-	padding: 0 10% 0 5%;
+	padding: 0 2rem 0 1rem;
+	color: variables.$primary_dark;
 
 	&__header {
 		@extend %mobile__subheader;
@@ -115,10 +116,66 @@ body {
 
 	&__copy {
 		@extend %mobile__body-copy;
+		margin-bottom: 1rem;
 	}
 }
 
-.gallery__photo {
-	width: 90vw;
-	margin: 0;
+.gallery {
+	padding: 0 1rem;
+
+	&__heading {
+		@extend %mobile__page-header;
+		margin: 2.5rem 0 0.5rem;
+		color: variables.$primary_dark;
+	}
+
+	&__photo {
+		width: 90vw;
+		margin: 0 0 0.5rem;
+	}
+}
+
+.footer {
+	background-color: variables.$primary_dark;
+	padding: 1rem;
+	color: variables.$primary_light;
+
+	&__heading {
+		@extend %mobile__page-header;
+	}
+
+	&__social {
+		height: 1.5rem;
+
+		&-link {
+			@extend .footer__social;
+			display: inline-block;
+			margin-right: 2rem;
+		}
+
+		&-icon {
+			@extend .footer__social;
+		}
+	}
+
+	&__logo {
+		@extend .nav__header;
+		margin-top: 3rem;
+	}
+
+	&__copyright {
+		font-size: 0.7rem;
+	}
+}
+
+.contact {
+	&__header {
+		@extend %mobile__subheader;
+		margin: 2rem 0 1rem;
+	}
+
+	&__mailto {
+		text-decoration: none;
+		color: variables.$primary_light;
+	}
 }
