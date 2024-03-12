@@ -2,10 +2,15 @@
 @use "./partials/typography";
 @use "./partials/mixins";
 
-body {
-	@extend %body-copy;
-	margin: 0;
+* {
+	text-decoration: none;
 	box-sizing: border-box;
+	list-style-type: none;
+}
+
+body {
+	@include mixins.body-copy;
+	margin: 0;
 }
 
 .nav {
@@ -15,23 +20,42 @@ body {
 	background-color: variables.$primary_dark;
 	color: variables.$primary_light;
 
+	@include mixins.tablet {
+		flex-direction: row;
+		align-items: baseline;
+	}
+
 	&__header {
 		@extend %mobile__page-header;
-		font-weight: 400;
 		max-width: 120px;
 		max-height: 20px;
+		font-weight: 400;
+		color: variables.$primary_light;
+		margin: 1rem;
+
+		@include mixins.tablet {
+			margin: 1.5rem 2rem;
+		}
 	}
 
-	&__divider {
-		display: flex;
-		flex-direction: row;
+	&__list {
+		padding: 0;
+		margin: 0;
+
+		@include mixins.tablet {
+			display: flex;
+		}
 	}
 
-	&__division {
-		display: flex;
-		justify-content: center;
-		width: 50vw;
+	&__item {
+		display: inline-block;
+		width: 49.7vw;
 		@extend %mobile__subheader;
+
+		@include mixins.tablet {
+			width: auto;
+			margin: 0 2rem;
+		}
 
 		&-link {
 			font-weight: 400;
@@ -43,6 +67,10 @@ body {
 			font-weight: 700;
 			padding-bottom: 0.5rem;
 			border-bottom: 0.25rem solid variables.$primary_light;
+
+			@include mixins.tablet {
+				padding-bottom: 1rem;
+			}
 		}
 	}
 }
@@ -50,8 +78,13 @@ body {
 .hero {
 	background-image: url(../../assets/images/hero-bio.jpg);
 	background-size: cover;
-	background-position: center;
-	height: 11.75rem;
+	background-position: center -0.875rem;
+	height: 58vw;
+	color: variables.$primary_light;
+
+	@include mixins.tablet {
+		background-position: center -3.75rem;
+	}
 
 	&__overlay {
 		display: flex;
@@ -64,7 +97,12 @@ body {
 	&__header {
 		margin-left: 1rem;
 		@extend %mobile__page-header;
-		color: variables.$primary_light;
+
+		@include mixins.tablet {
+			margin-left: 2rem;
+			@include mixins.page-header;
+			font-weight: 600;
+		}
 	}
 }
 
@@ -178,7 +216,6 @@ body {
 	}
 
 	&__mailto {
-		text-decoration: none;
 		color: variables.$primary_light;
 	}
 }
