@@ -42,7 +42,7 @@
 
 body {
   font-family: "avenir-next";
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.375rem;
   margin: 0;
@@ -62,9 +62,9 @@ body {
   }
 }
 .nav__header, .footer__logo {
+  font-weight: 400;
   max-width: 120px;
   max-height: 20px;
-  font-weight: 400;
   color: #ffffff;
   margin: 1rem;
 }
@@ -148,49 +148,123 @@ body {
   padding: 0 1rem;
   color: #323232;
 }
-.about__container {
-  display: flex;
-  width: 100%;
+@media (min-width: 768px) {
+  .about {
+    background-position: center -3.75rem;
+  }
 }
 .about__header {
   font-weight: 600;
+  align-self: flex-start;
   margin: 1.5rem 0 0.5rem;
+}
+@media (min-width: 768px) {
+  .about__header {
+    font-family: "avenir-next";
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 2.75rem;
+    margin: 3.5rem 1.5rem 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .about__container {
+    padding: 0 5rem;
+  }
 }
 .about__image {
   background-image: url(../assets/images/band.jpg);
   background-size: cover;
   background-position: bottom;
-  width: 90vw;
   height: 9.5rem;
   margin: 0;
+}
+@media (min-width: 768px) {
+  .about__image {
+    height: 19rem;
+    background-position: top -3rem left;
+    margin: 0 0 2rem;
+  }
 }
 .about__caption, .about__attribution {
   align-self: baseline;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
+@media (min-width: 768px) {
+  .about__caption, .about__attribution {
+    font-family: "avenir-next";
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    font-size: 1.4rem;
+  }
+}
 .about__attribution {
   align-self: flex-start;
   margin: 0 0 0.5rem;
 }
+@media (min-width: 768px) {
+  .about__attribution {
+    font-size: 1rem;
+  }
+}
 
 .bio {
-  padding: 0 2rem 0 1rem;
+  padding: 0 1rem;
   color: #323232;
+}
+@media (min-width: 768px) {
+  .bio {
+    padding: 0 5rem;
+  }
 }
 .bio__header {
   font-size: 0.95rem;
 }
+@media (min-width: 768px) {
+  .bio__header {
+    font-family: "avenir-next";
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2rem;
+    margin: 3rem 0 1.5rem 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .bio__container {
+    display: flex;
+  }
+}
 .bio__copy {
-  margin-bottom: 1rem;
+  margin: 0 1rem 0 0;
+}
+@media (min-width: 768px) {
+  .bio__copy {
+    font-family: "avenir-next";
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.375rem;
+    margin: 0 1rem 2rem;
+  }
 }
 
 .gallery {
-  padding: 0 1rem;
+  padding: 3rem 1rem 0;
+  background-color: #fafafa;
 }
 .gallery__heading {
   margin: 2.5rem 0 0.5rem;
   color: #323232;
+}
+@media (min-width: 768px) {
+  .gallery__heading {
+    font-family: "avenir-next";
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 2.75rem;
+    margin: 1.5rem 1.5rem 1.5rem;
+  }
 }
 .gallery__photo {
   width: 90vw;
