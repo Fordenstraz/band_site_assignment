@@ -180,6 +180,12 @@ body {
 @media (min-width: 768px) {
   .about {
     background-position: center -3.75rem;
+    padding: 3.5rem 2.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .about {
+    padding: 1.5rem 8rem;
   }
 }
 .about__header {
@@ -193,17 +199,16 @@ body {
     font-size: 2.25rem;
     font-weight: 600;
     line-height: 2.75rem;
-    margin: 3.5rem 1.5rem 1.5rem;
-  }
-}
-@media (min-width: 1280px) {
-  .about__header {
-    margin: 2rem 2.5rem 0rem 8rem;
   }
 }
 @media (min-width: 768px) {
   .about__container {
-    padding: 0 5rem;
+    padding: 0 3.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .about__container {
+    padding: 0 5.5rem;
   }
 }
 .about__image {
@@ -217,7 +222,13 @@ body {
   .about__image {
     height: 19rem;
     background-position: top -3rem left;
-    margin: 0 0 2rem;
+    margin: 1.5rem 0 2rem;
+  }
+}
+@media (min-width: 1280px) {
+  .about__image {
+    height: 28.5rem;
+    background-position: top -3.5rem left;
   }
 }
 .about__caption, .about__attribution {
@@ -232,6 +243,11 @@ body {
     font-weight: 600;
     line-height: 2rem;
     font-size: 1.4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .about__caption, .about__attribution {
+    margin-right: 11rem;
   }
 }
 .about__attribution {
@@ -250,6 +266,11 @@ body {
 @media (min-width: 768px) {
   .bio {
     padding: 0 5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .bio {
+    padding: 0rem 12.5rem;
   }
 }
 .bio__header {
@@ -281,6 +302,11 @@ body {
     margin: 0 1rem 2rem;
   }
 }
+@media (min-width: 1280px) {
+  .bio__copy {
+    margin: 0 1rem 0.5rem;
+  }
+}
 
 .gallery {
   padding: 2rem 1rem 0;
@@ -289,6 +315,11 @@ body {
 @media (min-width: 768px) {
   .gallery {
     padding: 3rem 2.5rem 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .gallery {
+    padding: 0rem 8rem;
   }
 }
 .gallery__heading {
@@ -332,6 +363,11 @@ body {
   .footer {
     padding: 3rem 2.5rem 2.5rem;
     position: relative;
+  }
+}
+@media (min-width: 1280px) {
+  .footer {
+    padding: 3rem 8rem 2.5rem;
   }
 }
 @media (min-width: 768px) {

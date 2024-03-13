@@ -139,6 +139,11 @@ body {
 
 	@include mixins.tablet {
 		background-position: center -3.75rem;
+		padding: 3.5rem 2.5rem;
+	}
+
+	@include mixins.desktop {
+		padding: 1.5rem 8rem;
 	}
 
 	&__header {
@@ -149,17 +154,16 @@ body {
 
 		@include mixins.tablet {
 			@include mixins.section-header;
-			margin: 3.5rem 1.5rem 1.5rem;
-		}
-
-		@include mixins.desktop {
-			margin: 2rem 2.5rem 0rem 8rem;
 		}
 	}
 
 	&__container {
 		@include mixins.tablet {
-			padding: 0 5rem;
+			padding: 0 3.5rem;
+		}
+
+		@include mixins.desktop {
+			padding: 0 5.5rem;
 		}
 	}
 
@@ -173,7 +177,12 @@ body {
 		@include mixins.tablet {
 			height: 19rem;
 			background-position: top -3rem left;
-			margin: 0 0 2rem;
+			margin: 1.5rem 0 2rem;
+		}
+
+		@include mixins.desktop {
+			height: 28.5rem;
+			background-position: top -3.5rem left;
 		}
 	}
 
@@ -185,6 +194,10 @@ body {
 		@include mixins.tablet {
 			@include mixins.subheader;
 			font-size: 1.4rem;
+		}
+
+		@include mixins.desktop {
+			margin-right: 11rem;
 		}
 	}
 
@@ -204,6 +217,10 @@ body {
 
 	@include mixins.tablet {
 		padding: 0 5rem;
+	}
+
+	@include mixins.desktop {
+		padding: 0rem 12.5rem;
 	}
 
 	&__header {
@@ -230,6 +247,10 @@ body {
 			@include mixins.body-copy;
 			margin: 0 1rem 2rem;
 		}
+
+		@include mixins.desktop {
+			margin: 0 1rem 0.5rem;
+		}
 	}
 }
 
@@ -239,6 +260,10 @@ body {
 
 	@include mixins.tablet {
 		padding: 3rem 2.5rem 1rem;
+	}
+
+	@include mixins.desktop {
+		padding: 0rem 8rem;
 	}
 
 	&__heading {
@@ -280,6 +305,10 @@ body {
 	@include mixins.tablet {
 		padding: 3rem 2.5rem 2.5rem;
 		position: relative;
+	}
+
+	@include mixins.desktop {
+		padding: 3rem 8rem 2.5rem;
 	}
 
 	&__container {
