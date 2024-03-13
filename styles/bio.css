@@ -74,6 +74,7 @@ body {
   }
 }
 .nav__list {
+  display: flex;
   padding: 0;
   margin: 0;
 }
@@ -84,6 +85,7 @@ body {
 }
 .nav__item {
   display: inline-block;
+  text-align: center;
   width: 49.7vw;
 }
 @media (min-width: 768px) {
@@ -202,7 +204,6 @@ body {
 }
 .about__attribution {
   align-self: flex-start;
-  margin: 0 0 0.5rem;
 }
 @media (min-width: 768px) {
   .about__attribution {
@@ -211,7 +212,7 @@ body {
 }
 
 .bio {
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   color: #323232;
 }
 @media (min-width: 768px) {
@@ -228,7 +229,7 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 2rem;
-    margin: 3rem 0 1.5rem 1rem;
+    margin: 2.5rem 0 1.5rem 1rem;
   }
 }
 @media (min-width: 768px) {
@@ -237,7 +238,7 @@ body {
   }
 }
 .bio__copy {
-  margin: 0 1rem 1.5rem 0;
+  margin: 0 1rem 0.5rem 0;
 }
 @media (min-width: 768px) {
   .bio__copy {
@@ -295,6 +296,27 @@ body {
   padding: 1rem;
   color: #ffffff;
 }
+@media (min-width: 768px) {
+  .footer {
+    padding: 3rem 2.5rem 2.5rem;
+    position: relative;
+  }
+}
+@media (min-width: 768px) {
+  .footer__container {
+    display: flex;
+    align-items: baseline;
+  }
+}
+@media (min-width: 768px) {
+  .footer__heading {
+    font-family: "avenir-next";
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 2.75rem;
+    margin: 0 2rem 0 0;
+  }
+}
 .footer__social, .footer__social-icon, .footer__social-link {
   height: 1.5rem;
 }
@@ -303,12 +325,36 @@ body {
   margin-right: 2rem;
 }
 .footer__logo {
-  margin-top: 3rem;
+  margin: 3rem 0 1rem 0;
+}
+@media (min-width: 768px) {
+  .footer__logo {
+    margin: 0;
+    position: absolute;
+    top: 3rem;
+    right: 2.5rem;
+  }
 }
 .footer__copyright {
   font-size: 0.7rem;
 }
+@media (min-width: 768px) {
+  .footer__copyright {
+    font-family: "avenir-next";
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin-top: 3rem;
+  }
+}
 
+@media (min-width: 768px) {
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
 .contact__header {
   margin: 2rem 0 1rem;
 }

@@ -39,6 +39,7 @@ body {
 	}
 
 	&__list {
+		display: flex;
 		padding: 0;
 		margin: 0;
 
@@ -49,6 +50,7 @@ body {
 
 	&__item {
 		display: inline-block;
+		text-align: center;
 		width: 49.7vw;
 		@extend %mobile__subheader;
 
@@ -163,7 +165,6 @@ body {
 	&__attribution {
 		@extend .about__caption;
 		align-self: flex-start;
-		margin: 0 0 0.5rem;
 
 		@include mixins.tablet {
 			font-size: 1rem;
@@ -172,7 +173,7 @@ body {
 }
 
 .bio {
-	padding: 0 1rem;
+	padding: 0.5rem 1rem;
 	color: variables.$primary_dark;
 
 	@include mixins.tablet {
@@ -185,7 +186,7 @@ body {
 
 		@include mixins.tablet {
 			@include mixins.subheader;
-			margin: 3rem 0 1.5rem 1rem;
+			margin: 2.5rem 0 1.5rem 1rem;
 		}
 	}
 
@@ -197,7 +198,7 @@ body {
 
 	&__copy {
 		@extend %mobile__body-copy;
-		margin: 0 1rem 1.5rem 0;
+		margin: 0 1rem 0.5rem 0;
 
 		@include mixins.tablet {
 			@include mixins.body-copy;
@@ -250,8 +251,25 @@ body {
 	padding: 1rem;
 	color: variables.$primary_light;
 
+	@include mixins.tablet {
+		padding: 3rem 2.5rem 2.5rem;
+		position: relative;
+	}
+
+	&__container {
+		@include mixins.tablet {
+			display: flex;
+			align-items: baseline;
+		}
+	}
+
 	&__heading {
 		@extend %mobile__page-header;
+
+		@include mixins.tablet {
+			@include mixins.section-header;
+			margin: 0 2rem 0 0;
+		}
 	}
 
 	&__social {
@@ -270,15 +288,33 @@ body {
 
 	&__logo {
 		@extend .nav__header;
-		margin-top: 3rem;
+		margin: 3rem 0 1rem 0;
+
+		@include mixins.tablet {
+			margin: 0;
+			position: absolute;
+			top: 3rem;
+			right: 2.5rem;
+		}
 	}
 
 	&__copyright {
 		font-size: 0.7rem;
+
+		@include mixins.tablet {
+			@include mixins.footer-copy;
+			margin-top: 3rem;
+		}
 	}
 }
 
 .contact {
+	@include mixins.tablet {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+	}
+
 	&__header {
 		@extend %mobile__subheader;
 		margin: 2rem 0 1rem;
