@@ -36,6 +36,10 @@ body {
 		@include mixins.tablet {
 			margin: 1.5rem 2rem;
 		}
+
+		@include mixins.desktop {
+			margin: 2rem 2.5rem 0rem 8rem;
+		}
 	}
 
 	&__list {
@@ -59,6 +63,10 @@ body {
 			margin: 0 2rem;
 		}
 
+		@include mixins.desktop {
+			margin: 0 1rem;
+		}
+
 		&-link {
 			font-weight: 400;
 			text-decoration: none;
@@ -73,6 +81,11 @@ body {
 			@include mixins.tablet {
 				padding-bottom: 1rem;
 			}
+
+			@include mixins.desktop {
+				padding-bottom: 1.5rem;
+				border-width: 0.063rem;
+			}
 		}
 	}
 }
@@ -86,6 +99,11 @@ body {
 
 	@include mixins.tablet {
 		background-position: center -3.75rem;
+	}
+
+	@include mixins.desktop {
+		height: 49.5vw;
+		background-position: center -3rem;
 	}
 
 	&__overlay {
@@ -104,6 +122,10 @@ body {
 			margin-left: 2rem;
 			@include mixins.page-header;
 			font-weight: 600;
+		}
+
+		@include mixins.desktop {
+			margin: 2rem 2.5rem 0rem 8rem;
 		}
 	}
 }
@@ -128,6 +150,10 @@ body {
 		@include mixins.tablet {
 			@include mixins.section-header;
 			margin: 3.5rem 1.5rem 1.5rem;
+		}
+
+		@include mixins.desktop {
+			margin: 2rem 2.5rem 0rem 8rem;
 		}
 	}
 

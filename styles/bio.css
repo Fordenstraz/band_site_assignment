@@ -73,6 +73,11 @@ body {
     margin: 1.5rem 2rem;
   }
 }
+@media (min-width: 1280px) {
+  .nav__header, .footer__logo {
+    margin: 2rem 2.5rem 0rem 8rem;
+  }
+}
 .nav__list {
   display: flex;
   padding: 0;
@@ -94,6 +99,11 @@ body {
     margin: 0 2rem;
   }
 }
+@media (min-width: 1280px) {
+  .nav__item {
+    margin: 0 1rem;
+  }
+}
 .nav__item-link {
   font-weight: 400;
   text-decoration: none;
@@ -109,6 +119,12 @@ body {
     padding-bottom: 1rem;
   }
 }
+@media (min-width: 1280px) {
+  .nav__item--active {
+    padding-bottom: 1.5rem;
+    border-width: 0.063rem;
+  }
+}
 
 .hero {
   background-image: url(../../assets/images/hero-bio.jpg);
@@ -120,6 +136,12 @@ body {
 @media (min-width: 768px) {
   .hero {
     background-position: center -3.75rem;
+  }
+}
+@media (min-width: 1280px) {
+  .hero {
+    height: 49.5vw;
+    background-position: center -3rem;
   }
 }
 .hero__overlay {
@@ -140,6 +162,11 @@ body {
     font-weight: 700;
     line-height: 4.25rem;
     font-weight: 600;
+  }
+}
+@media (min-width: 1280px) {
+  .hero__header {
+    margin: 2rem 2.5rem 0rem 8rem;
   }
 }
 
@@ -167,6 +194,11 @@ body {
     font-weight: 600;
     line-height: 2.75rem;
     margin: 3.5rem 1.5rem 1.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .about__header {
+    margin: 2rem 2.5rem 0rem 8rem;
   }
 }
 @media (min-width: 768px) {
