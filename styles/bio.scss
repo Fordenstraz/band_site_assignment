@@ -1,4 +1,4 @@
-@use "./partials/variables";
+@use "./partials/colours";
 @use "./partials/typography";
 @use "./partials/mixins";
 
@@ -17,8 +17,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: variables.$primary_dark;
-	color: variables.$primary_light;
+	background-color: colours.$primary_dark;
 
 	@include mixins.tablet {
 		flex-direction: row;
@@ -30,15 +29,15 @@ body {
 		font-weight: 400;
 		max-width: 120px;
 		max-height: 20px;
-		color: variables.$primary_light;
 		margin: 1rem;
+		color: colours.$primary_light;
 
 		@include mixins.tablet {
-			margin: 1.5rem 2rem;
+			margin: 1.5rem 5vw;
 		}
 
 		@include mixins.desktop {
-			margin: 2rem 2.5rem 0rem 8rem;
+			margin: 2rem 2.5rem 0rem 10vw;
 		}
 	}
 
@@ -70,13 +69,13 @@ body {
 		&-link {
 			font-weight: 400;
 			text-decoration: none;
-			color: variables.$secondary_med;
+			color: colours.$secondary_med;
 		}
 
 		&--active {
-			font-weight: 700;
+			color: colours.$primary_light;
 			padding-bottom: 0.5rem;
-			border-bottom: 0.25rem solid variables.$primary_light;
+			border-bottom: 0.25rem solid colours.$primary_light;
 
 			@include mixins.tablet {
 				padding-bottom: 1rem;
@@ -95,7 +94,7 @@ body {
 	background-size: cover;
 	background-position: center -0.875rem;
 	height: 58vw;
-	color: variables.$primary_light;
+	color: colours.$primary_light;
 
 	@include mixins.tablet {
 		background-position: center -3.75rem;
@@ -109,23 +108,22 @@ body {
 	&__overlay {
 		display: flex;
 		align-items: center;
-		background-color: variables.$primary_dark--overlay;
+		background-color: colours.$primary_dark--overlay;
 		width: 100%;
 		height: 100%;
 	}
 
 	&__header {
-		margin-left: 1rem;
+		margin-left: 5vw;
 		@extend %mobile__page-header;
 
 		@include mixins.tablet {
-			margin-left: 2rem;
 			@include mixins.page-header;
 			font-weight: 600;
 		}
 
 		@include mixins.desktop {
-			margin: 2rem 2.5rem 0rem 8rem;
+			margin: 2rem 2.5rem 0rem 10vw;
 		}
 	}
 }
@@ -134,16 +132,16 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 1rem;
-	color: variables.$primary_dark;
+	padding: 0 5vw;
+	color: colours.$primary_dark;
 
 	@include mixins.tablet {
 		background-position: center -3.75rem;
-		padding: 3.5rem 2.5rem;
+		padding: 3.5rem 5vw;
 	}
 
 	@include mixins.desktop {
-		padding: 1.5rem 8rem;
+		padding: 1.5rem 10vw;
 	}
 
 	&__header {
@@ -159,11 +157,11 @@ body {
 
 	&__container {
 		@include mixins.tablet {
-			padding: 0 3.5rem;
+			padding: 0 8vw;
 		}
 
 		@include mixins.desktop {
-			padding: 0 5.5rem;
+			padding: 0 6.875vw;
 		}
 	}
 
@@ -212,15 +210,15 @@ body {
 }
 
 .bio {
-	padding: 0.5rem 1rem;
-	color: variables.$primary_dark;
+	padding: 0.5rem 5vw;
+	color: colours.$primary_dark;
 
 	@include mixins.tablet {
-		padding: 0 5rem;
+		padding: 0 11vw;
 	}
 
 	@include mixins.desktop {
-		padding: 0rem 12.5rem;
+		padding: 0rem 15.875vw;
 	}
 
 	&__header {
@@ -241,46 +239,48 @@ body {
 
 	&__copy {
 		@extend %mobile__body-copy;
-		margin: 0 1rem 0.5rem 0;
+		margin: 0 1rem 1vw 0;
 
 		@include mixins.tablet {
 			@include mixins.body-copy;
 			margin: 0 1rem 2rem;
 		}
-
-		@include mixins.desktop {
-			margin: 0 1rem 0.5rem;
-		}
 	}
 }
 
 .gallery {
-	padding: 2rem 1rem 0;
-	background-color: variables.$secondary_light;
+	padding: 2rem 5vw 0;
+	background-color: colours.$secondary_light;
 
 	@include mixins.tablet {
-		padding: 3rem 2.5rem 1rem;
+		padding: 3rem 5vw 1rem;
 	}
 
 	@include mixins.desktop {
-		padding: 0rem 8rem;
+		padding: 2rem 10vw 0rem;
 	}
 
 	&__heading {
 		@extend %mobile__page-header;
 		margin: 0 0 0.5rem;
-		color: variables.$primary_dark;
+		color: colours.$primary_dark;
 
 		@include mixins.tablet {
 			@include mixins.section-header;
 			margin: 1.5rem 0 1.5rem;
 		}
+
+		@include mixins.desktop {
+			margin: 1.5rem 0 2rem;
+		}
 	}
 
 	&__container {
+		display: flex;
+		flex-direction: column;
+
 		@include mixins.tablet {
-			display: flex;
-			flex-wrap: wrap;
+			flex-flow: row wrap;
 			justify-content: space-between;
 			align-items: space-between;
 		}
@@ -291,24 +291,36 @@ body {
 		margin: 0 0 0.5rem;
 
 		@include mixins.tablet {
-			width: 27.75vw;
-			margin-bottom: 1rem;
+			width: 28.5vw;
+			margin-bottom: 1.25vw;
+			filter: grayscale(100%) !important;
+			transition: 0.4s;
+		}
+
+		&:hover {
+			@include mixins.tablet {
+				filter: grayscale(0%) !important;
+			}
+		}
+
+		@include mixins.desktop {
+			width: 25.5vw;
 		}
 	}
 }
 
 .footer {
-	background-color: variables.$primary_dark;
-	padding: 1rem;
-	color: variables.$primary_light;
+	background-color: colours.$primary_dark;
+	padding: 1rem 5vw 1rem;
+	color: colours.$primary_light;
 
 	@include mixins.tablet {
-		padding: 3rem 2.5rem 2.5rem;
+		padding: 3rem 5vw 2.5rem;
 		position: relative;
 	}
 
 	@include mixins.desktop {
-		padding: 3rem 8rem 2.5rem;
+		padding: 3rem 10vw 2.5rem;
 	}
 
 	&__container {
@@ -323,7 +335,7 @@ body {
 
 		@include mixins.tablet {
 			@include mixins.section-header;
-			margin: 0 2rem 0 0;
+			margin: 0 2.5vw 0 0;
 		}
 	}
 
@@ -351,6 +363,10 @@ body {
 			top: 3rem;
 			right: 2.5rem;
 		}
+
+		@include mixins.desktop {
+			right: 8rem;
+		}
 	}
 
 	&__copyright {
@@ -358,7 +374,7 @@ body {
 
 		@include mixins.tablet {
 			@include mixins.footer-copy;
-			margin-top: 3rem;
+			margin-top: 2rem;
 		}
 	}
 }
@@ -367,7 +383,13 @@ body {
 	@include mixins.tablet {
 		display: flex;
 		justify-content: space-between;
-		align-items: stretch;
+		width: 43.25rem;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	&__header {
@@ -376,6 +398,7 @@ body {
 	}
 
 	&__mailto {
-		color: variables.$primary_light;
+		color: colours.$primary_light;
+		margin: 1rem 0;
 	}
 }
