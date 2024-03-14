@@ -1,11 +1,4 @@
-// GENERAL
 @use "./colours";
-
-@mixin active-link {
-	color: colours.$primary_light;
-	padding-bottom: 0.5rem;
-	border-bottom: 0.25rem solid colours.$primary_light;
-}
 
 // MEDIA QUERRIES
 
@@ -22,6 +15,14 @@ $desktop: 1280px;
 	@media (min-width: $desktop) {
 		@content;
 	}
+}
+
+// GENERAL
+
+@mixin active-link {
+	color: colours.$primary_light;
+	padding-bottom: 1.5vw;
+	border-bottom: 0.25rem solid colours.$primary_light;
 }
 
 // DESKTOP TYPOGRAPHY
