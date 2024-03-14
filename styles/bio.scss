@@ -73,9 +73,7 @@ body {
 		}
 
 		&--active {
-			color: colours.$primary_light;
-			padding-bottom: 0.5rem;
-			border-bottom: 0.25rem solid colours.$primary_light;
+			@include mixins.active-link;
 
 			@include mixins.tablet {
 				padding-bottom: 1rem;
@@ -84,6 +82,20 @@ body {
 			@include mixins.desktop {
 				padding-bottom: 1.5rem;
 				border-width: 0.063rem;
+			}
+		}
+
+		:hover {
+			//* No hover state for mobile site, as touch screens have no 'hover' interaction. *//
+
+			@include mixins.tablet {
+				@include mixins.active-link;
+				padding-bottom: 1.25rem;
+			}
+
+			@include mixins.desktop {
+				padding-bottom: 1.75rem;
+				border-width: 0.0625rem;
 			}
 		}
 	}

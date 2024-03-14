@@ -124,6 +124,20 @@ body {
     border-width: 0.063rem;
   }
 }
+@media (min-width: 768px) {
+  .nav__item :hover {
+    color: #ffffff;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.25rem solid #ffffff;
+    padding-bottom: 1.25rem;
+  }
+}
+@media (min-width: 1280px) {
+  .nav__item :hover {
+    padding-bottom: 1.75rem;
+    border-width: 0.0625rem;
+  }
+}
 
 .hero {
   background-image: url(../../assets/images/hero-bio.jpg);

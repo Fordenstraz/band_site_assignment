@@ -1,3 +1,14 @@
+// GENERAL
+@use "./colours";
+
+@mixin active-link {
+	color: colours.$primary_light;
+	padding-bottom: 0.5rem;
+	border-bottom: 0.25rem solid colours.$primary_light;
+}
+
+// MEDIA QUERRIES
+
 $tablet: 768px;
 $desktop: 1280px;
 
