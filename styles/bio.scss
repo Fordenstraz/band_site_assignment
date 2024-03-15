@@ -288,7 +288,7 @@ body {
 	color: colours.$primary_light;
 
 	@include mixins.tablet {
-		padding: 3rem 5vw 2.5rem;
+		padding: 5rem 5vw 2.5rem;
 		position: relative;
 	}
 
@@ -308,7 +308,7 @@ body {
 
 		@include mixins.tablet {
 			@include mixins.section-header;
-			margin-right: 2.5vw;
+			margin: 0 2.5vw 0 0;
 		}
 	}
 
@@ -325,17 +325,18 @@ body {
 
 	&__logo {
 		@extend .nav__header;
-		margin: 3rem 0 1rem 0;
+		margin: 3rem 0 1rem;
 
 		@include mixins.tablet {
 			margin: 0;
 			position: absolute;
-			top: 3rem;
-			right: 2.5rem;
+			top: 5rem;
+			right: 5vw;
 		}
 
 		@include mixins.desktop {
-			right: 8rem;
+			top: 3rem;
+			right: 10vw;
 		}
 	}
 
