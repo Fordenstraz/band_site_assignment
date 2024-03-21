@@ -2,6 +2,62 @@
 @use "./partials/typography";
 @use "./partials/mixins";
 
+.nav {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: colours.$primary_dark;
+
+	@include mixins.tablet {
+		flex-direction: row;
+		align-items: baseline;
+	}
+
+	&__header {
+		@extend %mobile__page-header;
+		font-weight: 400;
+		margin: 1rem 0 0.5rem;
+		color: colours.$primary_light;
+
+		@include mixins.tablet {
+			margin: 1.75vw 5vw 1.5vw;
+		}
+	}
+
+	&__list {
+		display: flex;
+		align-items: stretch;
+	}
+
+	&__item {
+		text-align: center;
+		width: 50vw;
+
+		@include mixins.tablet {
+			width: auto;
+			margin: 0 1.5rem;
+		}
+
+		:hover {
+			// No hover state for mobile site, as touch screens have no 'hover' interaction. //
+
+			@include mixins.tablet {
+				@include mixins.active-link;
+				padding-bottom: calc(1.5vw + 0.22rem);
+			}
+		}
+
+		&-link {
+			color: colours.$secondary_med;
+		}
+
+		&--active {
+			@include mixins.active-link;
+			font-weight: 600;
+		}
+	}
+}
+
 .footer {
 	background-color: colours.$primary_dark;
 	padding: 1rem 5vw 1rem;
