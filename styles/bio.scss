@@ -1,110 +1,7 @@
 @use "./partials/colours";
 @use "./partials/typography";
 @use "./partials/mixins";
-
-* {
-	text-decoration: none;
-	box-sizing: border-box;
-}
-
-body {
-	@include mixins.body-copy;
-	margin: 0;
-}
-
-.nav {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: colours.$primary_dark;
-
-	@include mixins.tablet {
-		flex-direction: row;
-		align-items: baseline;
-	}
-
-	&__header {
-		@extend %mobile__page-header;
-		font-weight: 400;
-		margin: 1rem 0 0.5rem;
-		color: colours.$primary_light;
-
-		@include mixins.tablet {
-			margin: 1.75vw 5vw 1.5vw;
-		}
-	}
-
-	&__list {
-		display: flex;
-		align-items: stretch;
-	}
-
-	&__item {
-		text-align: center;
-		width: 50vw;
-
-		@include mixins.tablet {
-			width: auto;
-			margin: 0 1.5rem;
-		}
-
-		:hover {
-			// No hover state for mobile site, as touch screens have no 'hover' interaction. //
-
-			@include mixins.tablet {
-				@include mixins.active-link;
-				padding-bottom: calc(1.5vw + 0.22rem);
-			}
-		}
-
-		&-link {
-			color: colours.$secondary_med;
-		}
-
-		&--active {
-			@include mixins.active-link;
-			font-weight: 600;
-		}
-	}
-}
-
-.hero {
-	background-image: url(../../assets/images/hero-bio.jpg);
-	background-size: cover;
-	background-position: center -0.5rem;
-	height: 58vw;
-	color: colours.$primary_light;
-
-	@include mixins.tablet {
-		background-position: center -3.4rem;
-	}
-
-	@include mixins.desktop {
-		height: 49.5vw;
-		background-position: center -3rem;
-	}
-
-	&__overlay {
-		display: flex;
-		align-items: center;
-		background-color: colours.$primary_dark--overlay;
-		height: 100%;
-	}
-
-	&__header {
-		margin-left: 5vw;
-		@extend %mobile__page-header;
-
-		@include mixins.tablet {
-			@include mixins.page-header;
-			font-weight: 600;
-		}
-
-		@include mixins.desktop {
-			margin: 2rem 2.5rem 0rem 10vw;
-		}
-	}
-}
+@use "./partials/global";
 
 .about {
 	display: flex;
@@ -282,108 +179,16 @@ body {
 	}
 }
 
-.comments {
-	&__form {
-	}
+// .comments {
+// 	&__form {
+// 	}
 
-	&__header {
-	}
+// 	&__header {
+// 	}
 
-	&__comment {
-	}
-}
+// 	&__comment {
+// 	}
+// }
 
-.cta-button {
-}
-
-.footer {
-	background-color: colours.$primary_dark;
-	padding: 1rem 5vw 1rem;
-	color: colours.$primary_light;
-
-	@include mixins.tablet {
-		padding: 5rem 5vw 2.5rem;
-		position: relative;
-	}
-
-	@include mixins.desktop {
-		padding: 3rem 10vw 2.5rem;
-	}
-
-	&__container {
-		@include mixins.tablet {
-			display: flex;
-			align-items: baseline;
-		}
-	}
-
-	&__heading {
-		@extend %mobile__page-header;
-
-		@include mixins.tablet {
-			@include mixins.section-header;
-			margin: 0 2.5vw 0 0;
-		}
-	}
-
-	&__social {
-		&-link {
-			display: inline-block;
-			margin-right: 2rem;
-		}
-
-		&-icon {
-			height: 1.5rem;
-		}
-	}
-
-	&__logo {
-		@extend .nav__header;
-		margin: 3rem 0 1rem;
-
-		@include mixins.tablet {
-			margin: 0;
-			position: absolute;
-			top: 5rem;
-			right: 5vw;
-		}
-
-		@include mixins.desktop {
-			top: 3rem;
-			right: 10vw;
-		}
-	}
-
-	&__copyright {
-		font-size: 0.7rem;
-
-		@include mixins.tablet {
-			@include mixins.footer-copy;
-			margin-top: 2rem;
-		}
-	}
-}
-
-.contact {
-	@include mixins.tablet {
-		display: flex;
-		justify-content: space-between;
-		width: 43.25rem;
-	}
-
-	&__list {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-	&__header {
-		@extend %mobile__subheader;
-		margin: 2rem 0 1rem;
-	}
-
-	&__mailto {
-		color: colours.$primary_light;
-		margin: 1rem 0;
-	}
-}
+// .cta-button {
+// }
