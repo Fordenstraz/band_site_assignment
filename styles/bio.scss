@@ -4,19 +4,19 @@
 @use "./partials/global";
 
 .about {
+	@include mixins.mobile-padding;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 5vw;
 	color: colours.$primary_dark;
 
 	@include mixins.tablet {
 		background-position: center -3.75rem;
-		padding: 3.5rem 5vw;
+		padding-top: 1.5rem;
 	}
 
 	@include mixins.desktop {
-		padding: 1.5rem 10vw;
+		@include mixins.desktop-padding;
 	}
 
 	&__header {
@@ -31,11 +31,11 @@
 
 	&__container {
 		@include mixins.tablet {
-			padding: 0 8vw;
+			@include mixins.further-tablet-padding;
 		}
 
 		@include mixins.desktop {
-			padding: 0 6.875vw;
+			@include mixins.further-desktop-padding;
 		}
 	}
 
@@ -77,15 +77,22 @@
 }
 
 .bio {
-	padding: 0.5rem 5vw;
+	@include mixins.mobile-padding;
+	padding-top: 0.5rem;
 	color: colours.$primary_dark;
 
-	@include mixins.tablet {
-		padding: 0 11vw;
+	@include mixins.desktop {
+		@include mixins.desktop-padding;
 	}
 
-	@include mixins.desktop {
-		padding: 0rem 15.875vw;
+	&__body-padding {
+		@include mixins.tablet {
+			@include mixins.further-tablet-padding;
+		}
+
+		@include mixins.desktop {
+			@include mixins.further-desktop-padding;
+		}
 	}
 
 	&__header {
@@ -94,13 +101,19 @@
 
 		@include mixins.tablet {
 			@include mixins.subheader;
-			margin: 2.5rem 0 1.5rem 1rem;
+			@include mixins.further-tablet-padding;
+			margin: 2.5rem 0 1.5rem;
+		}
+
+		@include mixins.desktop {
+			@include mixins.further-desktop-padding;
 		}
 	}
 
 	&__container {
 		@include mixins.tablet {
 			display: flex;
+			gap: 1.15rem;
 		}
 	}
 
@@ -109,21 +122,18 @@
 
 		@include mixins.tablet {
 			@include mixins.body-copy;
-			margin: 0 1rem 2rem;
+			margin-bottom: 2rem;
 		}
 	}
 }
 
 .gallery {
-	padding: 2rem 5vw 0;
+	@include mixins.mobile-padding;
+	padding-top: 2rem;
 	background-color: colours.$secondary_light;
 
-	@include mixins.tablet {
-		padding: 3rem 5vw 1rem;
-	}
-
 	@include mixins.desktop {
-		padding: 2rem 10vw 0rem;
+		@include mixins.desktop-padding;
 	}
 
 	&__heading {

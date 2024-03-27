@@ -1,5 +1,26 @@
 @use "./colours";
 
+// PADDING
+@mixin mobile-padding {
+	padding-right: 5vw;
+	padding-left: 5vw;
+}
+
+@mixin desktop-padding {
+	padding-right: 10vw;
+	padding-left: 10vw;
+}
+
+@mixin further-tablet-padding {
+	padding-right: 8vw;
+	padding-left: 8vw;
+}
+
+@mixin further-desktop-padding {
+	padding-right: 6.875vw;
+	padding-left: 6.875vw;
+}
+
 // MEDIA QUERRIES
 
 $tablet: 768px;
