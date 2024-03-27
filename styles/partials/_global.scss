@@ -1,6 +1,6 @@
-@use "./colours";
-@use "./typography";
-@use "./mixins";
+@use './colours';
+@use './typography';
+@use './mixins';
 
 * {
 	text-decoration: none;
@@ -107,17 +107,20 @@ body {
 }
 
 .footer {
+	padding: 1rem 0;
+	@include mixins.mobile-padding;
 	background-color: colours.$primary_dark;
-	padding: 1rem 5vw 1rem;
 	color: colours.$primary_light;
 
 	@include mixins.tablet {
-		padding: 5rem 5vw 2.5rem;
+		padding-top: 5rem;
+		padding-bottom: 2.5rem;
 		position: relative;
 	}
 
 	@include mixins.desktop {
-		padding: 3rem 10vw 2.5rem;
+		@include mixins.desktop-padding;
+		padding-top: 3rem;
 	}
 
 	&__container {
@@ -190,6 +193,10 @@ body {
 	&__header {
 		@extend %mobile__subheader;
 		margin: 2rem 0 1rem;
+	}
+
+	&__info {
+		margin: 0;
 	}
 
 	&__mailto {

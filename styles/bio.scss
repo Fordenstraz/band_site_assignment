@@ -1,7 +1,7 @@
-@use "./partials/colours";
-@use "./partials/typography";
-@use "./partials/mixins";
-@use "./partials/global";
+@use './partials/colours';
+@use './partials/typography';
+@use './partials/mixins';
+@use './partials/global';
 
 .about {
 	@include mixins.mobile-padding;

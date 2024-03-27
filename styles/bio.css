@@ -144,19 +144,24 @@ body {
 }
 
 .footer {
+  padding: 1rem 0;
+  padding-right: 5vw;
+  padding-left: 5vw;
   background-color: #323232;
-  padding: 1rem 5vw 1rem;
   color: #ffffff;
 }
 @media (min-width: 768px) {
   .footer {
-    padding: 5rem 5vw 2.5rem;
+    padding-top: 5rem;
+    padding-bottom: 2.5rem;
     position: relative;
   }
 }
 @media (min-width: 1280px) {
   .footer {
-    padding: 3rem 10vw 2.5rem;
+    padding-right: 10vw;
+    padding-left: 10vw;
+    padding-top: 3rem;
   }
 }
 @media (min-width: 768px) {
@@ -225,6 +230,9 @@ body {
 }
 .contact__header {
   margin: 2rem 0 1rem;
+}
+.contact__info {
+  margin: 0;
 }
 .contact__mailto {
   color: #ffffff;
