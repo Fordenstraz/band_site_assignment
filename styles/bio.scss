@@ -189,16 +189,67 @@
 	}
 }
 
-// .comments {
-// 	&__form {
-// 	}
+.comments {
+	padding: 0 0 1rem;
+	@include mixins.mobile-padding;
+	color: colours.$primary_dark;
 
-// 	&__header {
-// 	}
+	@include mixins.tablet {
+		// placeholder
+	}
 
-// 	&__comment {
-// 	}
-// }
+	@include mixins.desktop {
+		@include mixins.desktop-padding;
+	}
 
-// .cta-button {
-// }
+	&__form {
+		&-header {
+		}
+	}
+
+	&__comment {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		// gap: 1rem;
+		width: 100%;
+		border-bottom: solid 0.063rem colours.$secondary_med;
+	}
+
+	&__container {
+		// width: 80%;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__avatar {
+		height: 2.25rem;
+		width: 2.25rem;
+		border-radius: 50%;
+		background-color: colours.$secondary_med;
+
+		@include mixins.tablet {
+			height: 3rem;
+			width: 3rem;
+		}
+	}
+
+	&__name {
+		@extend %mobile__subheader;
+		margin-top: 0;
+	}
+
+	&__date {
+		color: colours.$secondary_med;
+		margin-top: 0;
+	}
+
+	&__body {
+	}
+}
+
+.cta-button {
+}
