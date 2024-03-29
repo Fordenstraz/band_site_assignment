@@ -5,126 +5,157 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="../styles/shows.css" />
+
 		<title>Bandsite - Shows</title>
 	</head>
-	<body>
-        <header>
-			<nav class="nav">
 
-				<a class="nav__header" href="#">BANDSITE</a>
+	<body>
+		<header>
+			<nav class="nav">
+				<a
+					class="nav__header"
+					href="../index.html">
+					<img
+						src="../assets/logos/Logo-bandsite.svg"
+						alt="A logo that says bandsite in uppercase letters." />
+				</a>
 
 				<div class="nav__list">
-
-					<div class="nav__item nav__item--active">
-						Biography
-					</div>
-
 					<div class="nav__item">
 						<a
 							class="nav__item-link"
-							href="#"
-						>
-						Shows
+							href="../index.html">
+							Biography
 						</a>
 					</div>
+
+					<div class="nav__item nav__item--active">Shows</div>
 				</div>
 			</nav>
+
+			<section class="hero">
+				<div class="hero__overlay">
+					<h3 class="hero__album-title">Beautiful Beasts Album</h3>
+
+					<h1 class="hero__header">
+						Stripes of Yellow x For The Stings
+					</h1>
+
+					<article class="soundcloud-widget">
+						<iframe
+							class="player"
+							width="100%"
+							height="100"
+							scrolling="no"
+							frameborder="no"
+							allow="autoplay"
+							src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/256054240&color=%23c027b2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+						</iframe>
+					</article>
+				</div>
+			</section>
 		</header>
 
-        <main></main>
+		<main></main>
 
-        <footer>
-			
-			<div class="footer__container">
-
+		<footer class="footer">
+			<section class="footer__social-pages">
 				<h2 class="footer__heading">Get in Touch</h2>
 
 				<div class="footer__social">
-
 					<!-- INSTAGRAM -->
-					<a class="footer__social-link" href="https://www.instagram.com/">
+					<a
+						class="footer__social-link"
+						href="https://www.instagram.com/">
 						<img
 							class="footer__social-icon"
-							src="./assets/icons/Icon-instagram.svg"
+							src="../assets/icons/Icon-instagram.svg"
 							alt="The Instagram logo." />
 					</a>
 
 					<!-- FACEBOOK -->
-					<a class="footer__social-link" href="https://www.facebook.com/">
+					<a
+						class="footer__social-link"
+						href="https://www.facebook.com/">
 						<img
 							class="footer__social-icon"
-							src="./assets/icons/Icon-facebook.svg"
+							src="../assets/icons/Icon-facebook.svg"
 							alt="The facebook logo." />
 					</a>
 
 					<!-- TWITTER -->
-					<a class="footer__social-link" href="https://twitter.com/?lang=en">
+					<a
+						class="footer__social-link"
+						href="https://twitter.com/?lang=en">
 						<img
 							class="footer__social-icon"
-							src="./assets/icons/Icon-twitter.svg"
+							src="../assets/icons/Icon-twitter.svg"
 							alt="The Twitter logo." />
 					</a>
 				</div>
-			</div>
-			
+			</section>
+
 			<div class="contact">
-
 				<div class="contact__list">
-
 					<h4 class="contact__header">The Bees Knees Management</h4>
 
-					<p>503 Broadway Penthouse,
-					</br>
-					New York, NY 10012, USA</p>
+					<p class="contact__info">503 Broadway Penthouse,</p>
+					<p class="contact__info">New York, NY 10012, USA</p>
 
 					<a
 						class="contact__mailto"
 						href="mailto:info@thebeesknees.com"
-						target="_blank"
-					>
-					info@thebeesknees.com
-					</a>	
+						target="_blank">
+						info@thebeesknees.com
+					</a>
 				</div>
 
 				<div class="contact__list">
 					<h4 class="contact__header">Limitless Artist Group</h4>
 
-					<p>Booking Agent for
-					</br>
-					US / South America / Japan</p>
+					<p class="contact__info">Booking Agent for</p>
+					<p class="contact__info">US / South America / Japan</p>
 
 					<a
 						class="contact__mailto"
 						href="mailto:bookings@limitlessag.com"
-						target="_blank"
-					>
-					bookings@limitlessag.com
+						target="_blank">
+						bookings@limitlessag.com
 					</a>
 				</div>
 
 				<div class="contact__list">
 					<h4 class="contact__header">ARCH Entertainment</h4>
 
-					<p>Booking Agent for
-					</br>
-					UK / EU / AU</p>
+					<p class="contact__info">Booking Agent for</p>
+					<p class="contact__info">UK / EU / AU</p>
 
 					<a
 						class="contact__mailto"
 						href="mailto:bookings@archentertainment.com"
-						target="_blank"
-					>
-					bookings@archentertainment.com
+						target="_blank">
+						bookings@archentertainment.com
 					</a>
-					
 				</div>
 			</div>
 
-			<a class="footer__logo" href="../index.html">BANDSITE</a>
-			
-			<p class="footer__copyright">Copyright The Bees Knees &copy; 2023 All Rights Reserved</p>
+			<a
+				class="footer__logo"
+				href="#">
+				<img
+					class="footer__logo-image"
+					src="../assets/logos/Logo-bandsite.svg"
+					alt="A logo that says bandsite in uppercase letters." />
+			</a>
+
+			<p class="footer__copyright">
+				Copyright The Bees Knees &copy; 2023 All Rights Reserved
+			</p>
 		</footer>
 
-        <script src="../scripts/build-shows-page.js"></script>
-    </body>
+		<script src="../scripts/build-shows-page.js"></script>
+	</body>
 </html>

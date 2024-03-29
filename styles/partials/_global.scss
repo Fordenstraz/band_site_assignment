@@ -26,7 +26,7 @@ body {
 	&__header {
 		max-height: 1.25rem;
 		max-width: 7.5rem;
-		margin: 1rem 0 0.25rem;
+		margin: 1rem 0 0.5rem;
 
 		@include mixins.tablet {
 			margin: 1.75vw 5vw 1.5vw;
@@ -56,32 +56,20 @@ body {
 			}
 		}
 
-		&-link {
-			color: colours.$secondary_med;
-		}
-
 		&--active {
 			@include mixins.active-link;
 			font-weight: 600;
 		}
 	}
+
+	&__item-link {
+		color: colours.$secondary_med;
+	}
 }
 
 .hero {
-	background-image: url(../../assets/images/hero-bio.jpg);
 	background-size: cover;
-	background-position: center -0.5rem;
-	height: 58vw;
 	color: colours.$primary_light;
-
-	@include mixins.tablet {
-		background-position: center -3.4rem;
-	}
-
-	@include mixins.desktop {
-		height: 49.5vw;
-		background-position: center -3rem;
-	}
 
 	&__overlay {
 		display: flex;
@@ -138,15 +126,13 @@ body {
 		}
 	}
 
-	&__social {
-		&-link {
-			display: inline-block;
-			margin-right: 2rem;
-		}
+	&__social-link {
+		display: inline-block;
+		margin-right: 2rem;
+	}
 
-		&-icon {
-			height: 1.5rem;
-		}
+	&__social-icon {
+		height: 1.5rem;
 	}
 
 	&__logo {
