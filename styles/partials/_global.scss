@@ -8,7 +8,7 @@
 }
 
 body {
-	@include mixins.body-copy;
+	@include typography.body-copy;
 	margin: 0;
 }
 
@@ -19,8 +19,14 @@ body {
 	background-color: colours.$primary_dark;
 
 	@include mixins.tablet {
+		@include mixins.mobile-padding;
 		flex-direction: row;
-		align-items: baseline;
+		align-items: center;
+		column-gap: 4rem;
+	}
+
+	@include mixins.desktop {
+		@include mixins.desktop-padding;
 	}
 
 	&__header {
@@ -29,22 +35,32 @@ body {
 		margin: 1rem 0 0.5rem;
 
 		@include mixins.tablet {
-			margin: 1.75vw 5vw 1.5vw;
+			margin: 0;
 		}
 	}
 
 	&__list {
 		display: flex;
 		align-items: stretch;
+
+		@include mixins.tablet {
+			column-gap: 3rem;
+		}
 	}
 
 	&__item {
 		text-align: center;
 		width: 50vw;
+		padding: 0.5rem 0;
 
 		@include mixins.tablet {
 			width: auto;
-			margin: 0 1.5rem;
+			height: 100%;
+			padding: 1.5rem 0;
+		}
+
+		@include mixins.desktop {
+			min-width: 4rem;
 		}
 
 		:hover {
@@ -83,7 +99,7 @@ body {
 		@extend %mobile__page-header;
 
 		@include mixins.tablet {
-			@include mixins.page-header;
+			@include typography.page-header;
 			font-weight: 600;
 		}
 
@@ -100,7 +116,7 @@ body {
 	color: colours.$primary_light;
 
 	@include mixins.tablet {
-		padding-top: 5rem;
+		padding-top: 3rem;
 		padding-bottom: 2.5rem;
 		position: relative;
 	}
@@ -121,8 +137,8 @@ body {
 		@extend %mobile__page-header;
 
 		@include mixins.tablet {
-			@include mixins.section-header;
-			margin: 0 2.5vw 0 0;
+			@include typography.section-header;
+			margin: 0 4vw 1.5rem 0;
 		}
 	}
 
@@ -142,7 +158,7 @@ body {
 		@include mixins.tablet {
 			margin: 0;
 			position: absolute;
-			top: 5.8rem;
+			top: 3.8rem;
 			right: 5vw;
 		}
 
@@ -153,7 +169,7 @@ body {
 	}
 
 	&__logo-image {
-		margin-top: 2.5rem;
+		margin-top: 2rem;
 
 		@include mixins.tablet {
 			margin: 0;
@@ -164,7 +180,7 @@ body {
 		font-size: 0.7rem;
 
 		@include mixins.tablet {
-			@include mixins.footer-copy;
+			@include typography.footer-copy;
 			margin-top: 2rem;
 		}
 	}
@@ -175,6 +191,10 @@ body {
 		display: flex;
 		justify-content: space-between;
 		width: 42.25rem;
+	}
+
+	@include mixins.desktop {
+		width: 45rem;
 	}
 
 	&__list {

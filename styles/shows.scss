@@ -8,45 +8,83 @@
 	background-position: center;
 	height: 86vw;
 
-	&__overlay {
-		flex-direction: column;
-		align-items: flex-start;
-
-		@include mixins.mobile-padding;
-
-		@include mixins.desktop {
-			@include mixins.desktop-padding;
-		}
-	}
-
-	&__album-title {
-		margin: 2rem 0 0.75rem;
-		font-weight: 400;
-	}
-
-	&__header {
-		margin: 0 0 1rem;
-		max-width: 13rem;
-		font-weight: 600;
-	}
-
 	@include mixins.tablet {
+		height: 64vw;
 	}
 
 	@include mixins.desktop {
+		background-position: center -9rem;
+		height: 49vw;
+	}
+
+	&__overlay {
+		@include mixins.mobile-padding;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 1vw;
+
+		@include mixins.tablet {
+			gap: 3vw;
+		}
+
+		@include mixins.desktop {
+			@include mixins.desktop-padding;
+			flex-direction: row;
+			align-items: center;
+			column-gap: 10vw;
+		}
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+	}
+
+	&__album-title {
+		@extend %mobile__subheader;
+		font-weight: 400;
+
+		@include mixins.tablet {
+			@include typography.subheader;
+		}
+	}
+
+	&__header {
+		margin: 0;
+		max-width: 13rem;
+		font-weight: 600;
+
+		@include mixins.tablet {
+			margin: 0;
+			max-width: 34rem;
+		}
 	}
 }
 
 .soundcloud-widget {
-	width: 100%;
-}
-
-.player {
 	background-color: white;
 	border: 0.063rem solid white;
 	border-radius: 0.25rem;
+	height: 33%;
+	max-height: 8rem;
+
+	@include mixins.tablet {
+		width: 26rem;
+		margin: 1rem 0 2rem;
+	}
+
+	@include mixins.desktop {
+		margin: 4.5rem 0 0;
+	}
 }
 
-.hero__album-title {
-	@extend %mobile__subheader;
+main {
+	@include mixins.mobile-padding;
+
+	@include mixins.desktop {
+		@include mixins.desktop-padding;
+	}
 }

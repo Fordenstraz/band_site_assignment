@@ -42,6 +42,5 @@ $desktop: 1280px;
 
 @mixin active-link {
 	color: colours.$primary_light;
-	padding-bottom: 1.5vw;
 	border-bottom: 0.2rem solid colours.$primary_light;
 }
