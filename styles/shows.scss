@@ -53,7 +53,7 @@
 	}
 
 	&__header {
-		margin: 0;
+		margin: 0 0 0.5rem;
 		max-width: 13rem;
 		font-weight: 600;
 
@@ -81,10 +81,87 @@
 	}
 }
 
-main {
-	@include mixins.mobile-padding;
+.shows {
+	padding: 2rem 0 1rem;
 
-	@include mixins.desktop {
-		@include mixins.desktop-padding;
+	&__header {
+		@include mixins.mobile-padding;
+		@extend %mobile__page-header;
+		font-weight: 600;
+		margin: 0 0 0.5rem;
+
+		@include mixins.tablet {
+			@include typography.section-header;
+		}
+
+		@include mixins.desktop {
+			@include mixins.desktop-padding;
+		}
+	}
+
+	&__container {
+	}
+
+	&__listing {
+		@include mixins.mobile-padding;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-bottom: 1rem;
+		border-bottom: 0.063rem solid colours.$secondary_med;
+
+		@include mixins.desktop {
+			@include mixins.desktop-padding;
+		}
+	}
+}
+
+.listing {
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		&:hover {
+			background-color: colours.$secondary_light;
+		}
+	}
+
+	&__header {
+		@extend %mobile__other-text;
+		font-weight: 600;
+		color: colours.$primary_med;
+		margin: 1rem 0 0.5rem;
+	}
+
+	&__place {
+		@extend %mobile__body-copy;
+		margin: 0;
+	}
+
+	&__date {
+		@extend .listing__place;
+		font-weight: 600;
+		color: colours.$primary_dark;
+	}
+
+	&__tickets-btn {
+		@extend %mobile__subheader;
+		width: 100%;
+		height: 2.5rem;
+		background-color: colours.$primary_dark;
+		color: colours.$primary_light;
+		border: none;
+		border-radius: 0.25rem;
+		margin-top: 1rem;
+
+		@include mixins.tablet {
+			min-width: 9.375rem;
+			padding: 0 2rem;
+		}
+
+		&:hover {
+			background-color: colours.$secondary_dark;
+		}
 	}
 }
