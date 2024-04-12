@@ -32,9 +32,21 @@ const upcomingShows = [
 	},
 ];
 
+//MOBILE PAGE BUILDER:
 const buildMobileShowsSection = array => {
-	const container = document.querySelector('.shows__container');
+	//refer to 'shows section':
+	const showsSection = document.querySelector('.shows');
 
+	//add the heading:
+	const showsHeading = document.createElement('h2');
+	showsHeading.classList.add('shows__header');
+	showsHeading.innerText = 'Shows';
+	showsSection.append(showsHeading);
+
+	//create listings container:
+	const container = document.createElement('div');
+
+	//generate show listings:
 	for (let show of array) {
 		//create div to hold listing content:
 		const listing = document.createElement('article');
@@ -42,12 +54,12 @@ const buildMobileShowsSection = array => {
 
 		//create the date content:
 		const dateHeading = document.createElement('h3');
-		dateHeading.innerText = 'DATE';
 		dateHeading.classList.add('listing__header');
+		dateHeading.innerText = 'DATE';
 
 		const dateData = document.createElement('p');
-		dateData.innerText = show.date;
 		dateData.classList.add('listing__date');
+		dateData.innerText = show.date;
 
 		const dateWrapper = document.createElement('div');
 		dateWrapper.classList.add('listing__wrapper');
@@ -56,12 +68,12 @@ const buildMobileShowsSection = array => {
 
 		//create the venue content:
 		const venueHeading = document.createElement('h3');
-		venueHeading.innerText = 'VENUE';
 		venueHeading.classList.add('listing__header');
+		venueHeading.innerText = 'VENUE';
 
 		const venueData = document.createElement('p');
-		venueData.innerText = show.venue;
 		venueData.classList.add('listing__place');
+		venueData.innerText = show.venue;
 
 		const venueWrapper = document.createElement('div');
 		venueWrapper.classList.add('listing__wrapper');
@@ -70,12 +82,12 @@ const buildMobileShowsSection = array => {
 
 		//create the location content:
 		const locationHeading = document.createElement('h3');
-		locationHeading.innerText = 'LOCATION';
 		locationHeading.classList.add('listing__header');
+		locationHeading.innerText = 'LOCATION';
 
 		const locationData = document.createElement('p');
-		locationData.innerText = show.location;
 		locationData.classList.add('listing__place');
+		locationData.innerText = show.location;
 
 		const locationWrapper = document.createElement('div');
 		locationWrapper.classList.add('listing__wrapper');
@@ -84,24 +96,99 @@ const buildMobileShowsSection = array => {
 
 		//create the CTA button:
 		const ctaButton = document.createElement('button');
-		ctaButton.innerText = 'BUY TICKETS';
 		ctaButton.classList.add('listing__tickets-btn');
+		ctaButton.innerText = 'BUY TICKETS';
 
-		//add all content to new listing, and add it to the page:
+		//add all content to new listing:
 		listing.append(dateWrapper);
 		listing.append(venueWrapper);
 		listing.append(locationWrapper);
 		listing.append(ctaButton);
 
+		//add listing to container:
 		container.append(listing);
 	}
+	//add container to the parent div:
+	showsSection.append(container);
 };
 
-// const buildShowsSection = array => {};
+//TABLET/DESKTOP PAGE BUILDER:
+const buildShowsSection = array => {
+	//refer to 'shows section':
+	const showsSection = document.querySelector('.shows');
 
-if (window.screen.width < 786) {
+	//add the heading:
+	const showsHeading = document.createElement('h2');
+	showsHeading.classList.add('shows__header');
+	showsHeading.innerText = 'Shows';
+	showsSection.append(showsHeading);
+
+	//create listings container:
+	const container = document.createElement('div');
+	container.classList.add('shows__container');
+
+	//create heading row:
+	const headingRow = document.createElement('div');
+	headingRow.classList.add('shows__headers-row');
+	//date:
+	const dateHeading = document.createElement('p');
+	dateHeading.classList.add('listing__header');
+	dateHeading.innerText = 'DATE';
+	headingRow.append(dateHeading);
+	//venue:
+	const venueHeading = document.createElement('p');
+	venueHeading.classList.add('listing__header');
+	venueHeading.innerText = 'VENUE';
+	headingRow.append(venueHeading);
+	//location:
+	const locationHeading = document.createElement('p');
+	locationHeading.classList.add('listing__header');
+	locationHeading.innerText = 'LOCATION';
+	headingRow.append(locationHeading);
+	//spacer:
+	const spacer = document.createElement('div');
+	spacer.classList.add('listing__header');
+	headingRow.append(spacer);
+	//add them all to the page:
+	container.append(headingRow);
+
+	//generate show listings:
+	for (show of array) {
+		//create div to hold listing content:
+		const listing = document.createElement('article');
+		listing.classList.add('shows__listing');
+		//create listing elements:
+		//date:
+		const date = document.createElement('p');
+		date.classList.add('listing__wrapper', 'listing__date');
+		date.innerText = show.date;
+		listing.append(date);
+		//venue:
+		const venue = document.createElement('p');
+		venue.classList.add('listing__wrapper', 'listing__place');
+		venue.innerText = show.venue;
+		listing.append(venue);
+		//location:
+		const location = document.createElement('p');
+		location.classList.add('listing__wrapper', 'listing__place');
+		location.innerText = show.location;
+		listing.append(location);
+		//button:
+		const button = document.createElement('button');
+		button.classList.add('listing__tickets-btn');
+		button.innerText = 'BUY TICKETS';
+		listing.append(button);
+		//add listing to container:
+		container.append(listing);
+	}
+
+	//add the container of listings to the page:
+	showsSection.append(container);
+};
+
+//CHECK WINDOW SIZE, RUN APPROPRIATE FUNCTION:
+if (window.innerWidth < 768) {
 	buildMobileShowsSection(upcomingShows);
+} else {
+	buildShowsSection(upcomingShows);
 }
-// else {
-//     buildShowsSection(upcomingShows);
-// }

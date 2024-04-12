@@ -337,8 +337,8 @@ body {
 }
 
 .soundcloud-widget {
-  background-color: white;
-  border: 0.063rem solid white;
+  background-color: #ffffff;
+  border: 0.063rem solid #ffffff;
   border-radius: 0.25rem;
   height: 33%;
   max-height: 8rem;
@@ -358,9 +358,31 @@ body {
 .shows {
   padding: 2rem 0 1rem;
 }
+@media (min-width: 768px) {
+  .shows {
+    padding: 2rem 1rem 1rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows {
+    padding-right: 10vw;
+    padding-left: 10vw;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.shows__container {
+  padding-bottom: 1rem;
+}
+@media (min-width: 1280px) {
+  .shows__container {
+    width: 80%;
+  }
+}
 .shows__header {
   padding-right: 5vw;
   padding-left: 5vw;
+  color: #000000;
   font-weight: 600;
   margin: 0 0 0.5rem;
 }
@@ -370,12 +392,14 @@ body {
     font-size: 2.25rem;
     font-weight: 600;
     line-height: 2.75rem;
+    padding: 1rem;
   }
 }
 @media (min-width: 1280px) {
   .shows__header {
-    padding-right: 10vw;
-    padding-left: 10vw;
+    padding: 0;
+    font-size: 1.75rem;
+    color: #323232;
   }
 }
 .shows__listing {
@@ -385,19 +409,33 @@ body {
   flex-direction: column;
   align-items: center;
   padding-bottom: 1rem;
-  border-bottom: 0.063rem solid #e1e1e1;
+  border-bottom: 0.125rem solid #e1e1e1;
 }
-@media (min-width: 1280px) {
+@media (min-width: 768px) {
   .shows__listing {
-    padding-right: 10vw;
-    padding-left: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem;
   }
+}
+.shows__headers-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-bottom: none;
 }
 
 .listing__wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+@media (min-width: 768px) {
+  .listing__wrapper {
+    width: 25%;
+  }
 }
 .listing__wrapper:hover {
   background-color: #fafafa;
@@ -407,7 +445,13 @@ body {
   color: #afafaf;
   margin: 1rem 0 0.5rem;
 }
+@media (min-width: 768px) {
+  .listing__header {
+    min-width: 9.375rem;
+  }
+}
 .listing__place, .listing__date {
+  color: #000000;
   margin: 0;
 }
 .listing__date {
@@ -426,7 +470,9 @@ body {
 @media (min-width: 768px) {
   .listing__tickets-btn {
     min-width: 9.375rem;
-    padding: 0 2rem;
+    width: 9.375rem;
+    padding: 0;
+    margin: 0;
   }
 }
 .listing__tickets-btn:hover {
