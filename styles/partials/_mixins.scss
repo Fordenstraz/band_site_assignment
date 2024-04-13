@@ -22,7 +22,6 @@
 }
 
 // MEDIA QUERRIES
-
 $tablet: 768px;
 $desktop: 1280px;
 
@@ -39,7 +38,6 @@ $desktop: 1280px;
 }
 
 // GENERAL
-
 @mixin active-link {
 	color: colours.$primary_light;
 	border-bottom: 0.2rem solid colours.$primary_light;

@@ -100,11 +100,11 @@ body {
   text-align: center;
   width: 50vw;
   padding: 0.5rem 0;
+  height: 100%;
 }
 @media (min-width: 768px) {
   .nav__item {
     width: auto;
-    height: 100%;
     padding: 1.5rem 0;
   }
 }
@@ -113,12 +113,9 @@ body {
     min-width: 4rem;
   }
 }
-@media (min-width: 768px) {
-  .nav__item :hover {
-    color: #ffffff;
-    border-bottom: 0.2rem solid #ffffff;
-    padding-bottom: calc(1.5vw + 0.22rem);
-  }
+.nav__item:hover {
+  color: #ffffff;
+  border-bottom: 0.2rem solid #ffffff;
 }
 .nav__item--active {
   color: #ffffff;

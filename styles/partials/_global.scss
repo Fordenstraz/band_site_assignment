@@ -52,10 +52,10 @@ body {
 		text-align: center;
 		width: 50vw;
 		padding: 0.5rem 0;
+		height: 100%;
 
 		@include mixins.tablet {
 			width: auto;
-			height: 100%;
 			padding: 1.5rem 0;
 		}
 
@@ -63,13 +63,8 @@ body {
 			min-width: 4rem;
 		}
 
-		:hover {
-			// No hover state for mobile site, as touch screens have no 'hover' interaction. //
-
-			@include mixins.tablet {
-				@include mixins.active-link;
-				padding-bottom: calc(1.5vw + 0.22rem);
-			}
+		&:hover {
+			@include mixins.active-link;
 		}
 
 		&--active {
