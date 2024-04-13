@@ -96,7 +96,7 @@ const buildMobileShowsSection = array => {
 
 		//create the CTA button:
 		const ctaButton = document.createElement('button');
-		ctaButton.classList.add('listing__tickets-btn');
+		ctaButton.classList.add('cta-button');
 		ctaButton.innerText = 'BUY TICKETS';
 
 		//add all content to new listing:
@@ -130,25 +130,30 @@ const buildShowsSection = array => {
 	//create heading row:
 	const headingRow = document.createElement('div');
 	headingRow.classList.add('shows__headers-row');
+
 	//date:
 	const dateHeading = document.createElement('p');
 	dateHeading.classList.add('listing__header');
 	dateHeading.innerText = 'DATE';
 	headingRow.append(dateHeading);
+
 	//venue:
 	const venueHeading = document.createElement('p');
 	venueHeading.classList.add('listing__header');
 	venueHeading.innerText = 'VENUE';
 	headingRow.append(venueHeading);
+
 	//location:
 	const locationHeading = document.createElement('p');
 	locationHeading.classList.add('listing__header');
 	locationHeading.innerText = 'LOCATION';
 	headingRow.append(locationHeading);
+
 	//spacer:
 	const spacer = document.createElement('div');
 	spacer.classList.add('listing__header');
 	headingRow.append(spacer);
+
 	//add them all to the page:
 	container.append(headingRow);
 
@@ -157,31 +162,35 @@ const buildShowsSection = array => {
 		//create div to hold listing content:
 		const listing = document.createElement('article');
 		listing.classList.add('shows__listing');
+
 		//create listing elements:
 		//date:
 		const date = document.createElement('p');
 		date.classList.add('listing__wrapper', 'listing__date');
 		date.innerText = show.date;
 		listing.append(date);
+
 		//venue:
 		const venue = document.createElement('p');
 		venue.classList.add('listing__wrapper', 'listing__place');
 		venue.innerText = show.venue;
 		listing.append(venue);
+
 		//location:
 		const location = document.createElement('p');
 		location.classList.add('listing__wrapper', 'listing__place');
 		location.innerText = show.location;
 		listing.append(location);
+
 		//button:
 		const button = document.createElement('button');
-		button.classList.add('listing__tickets-btn');
+		button.classList.add('cta-button');
 		button.innerText = 'BUY TICKETS';
 		listing.append(button);
+
 		//add listing to container:
 		container.append(listing);
 	}
-
 	//add the container of listings to the page:
 	showsSection.append(container);
 };
@@ -195,6 +204,7 @@ if (window.innerWidth < 768) {
 
 //SHOW ITEM SELECTED STATE:
 const showListings = document.querySelectorAll('.shows__listing');
+
 //apply event listener to every listing element:
 showListings.forEach(listing => {
 	listing.addEventListener('click', () => {

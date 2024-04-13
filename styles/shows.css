@@ -20,7 +20,7 @@
   line-height: 2rem;
 }
 
-.hero__album-title, .listing__tickets-btn, .contact__header {
+.hero__album-title, .cta-button, .contact__header {
   font-family: "avenir-next", Helvetica, sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
@@ -153,6 +153,27 @@ body {
   .hero__header {
     margin: 2rem 2.5rem 0rem 10vw;
   }
+}
+
+.cta-button {
+  width: 100%;
+  height: 2.5rem;
+  background-color: #323232;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .cta-button {
+    min-width: 9.375rem;
+    width: 9.375rem;
+    padding: 0;
+    margin: 0;
+  }
+}
+.cta-button:hover {
+  background-color: #000000;
 }
 
 .footer {
@@ -454,24 +475,4 @@ body {
 .listing__date {
   font-weight: 600;
   color: #323232;
-}
-.listing__tickets-btn {
-  width: 100%;
-  height: 2.5rem;
-  background-color: #323232;
-  color: #ffffff;
-  border: none;
-  border-radius: 0.25rem;
-  margin-top: 1rem;
-}
-@media (min-width: 768px) {
-  .listing__tickets-btn {
-    min-width: 9.375rem;
-    width: 9.375rem;
-    padding: 0;
-    margin: 0;
-  }
-}
-.listing__tickets-btn:hover {
-  background-color: #000000;
 }

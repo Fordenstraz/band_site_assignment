@@ -183,26 +183,4 @@
 		font-weight: 600;
 		color: colours.$primary_dark;
 	}
-
-	&__tickets-btn {
-		@extend %mobile__subheader;
-		width: 100%;
-		height: 2.5rem;
-		background-color: colours.$primary_dark;
-		color: colours.$primary_light;
-		border: none;
-		border-radius: 0.25rem;
-		margin-top: 1rem;
-
-		@include mixins.tablet {
-			min-width: 9.375rem;
-			width: 9.375rem;
-			padding: 0;
-			margin: 0;
-		}
-
-		&:hover {
-			background-color: colours.$secondary_dark;
-		}
-	}
 }
