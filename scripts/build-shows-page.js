@@ -192,3 +192,20 @@ if (window.innerWidth < 768) {
 } else {
 	buildShowsSection(upcomingShows);
 }
+
+//SHOW ITEM SELECTED STATE:
+const showListings = document.querySelectorAll('.shows__listing');
+//apply event listener to every listing element:
+showListings.forEach(listing => {
+	listing.addEventListener('click', () => {
+		//remover state from previous selection:
+		const previousSelection = document.querySelector(
+			'.shows__listing--selected'
+		);
+		if (previousSelection) {
+			previousSelection.classList.remove('shows__listing--selected');
+		}
+		//apply state to new selection:
+		listing.classList.add('shows__listing--selected');
+	});
+});

@@ -136,6 +136,10 @@
 			align-items: baseline;
 			padding: 1rem;
 		}
+
+		&--selected {
+			background-color: colours.$secondary_med;
+		}
 	}
 
 	&__headers-row {
@@ -154,10 +158,6 @@
 
 		@include mixins.tablet {
 			width: 25%;
-		}
-
-		&:hover {
-			background-color: colours.$secondary_light;
 		}
 	}
 

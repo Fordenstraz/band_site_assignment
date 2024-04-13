@@ -420,6 +420,9 @@ body {
     padding: 1rem;
   }
 }
+.shows__listing--selected {
+  background-color: #e1e1e1;
+}
 .shows__headers-row {
   display: flex;
   justify-content: space-between;
@@ -436,9 +439,6 @@ body {
   .listing__wrapper {
     width: 25%;
   }
-}
-.listing__wrapper:hover {
-  background-color: #fafafa;
 }
 .listing__header {
   font-weight: 600;
