@@ -549,6 +549,11 @@ body {
   padding-bottom: 1rem;
   border-bottom: solid 0.063rem #e1e1e1;
 }
+@media (min-width: 1280px) {
+  .comments__form {
+    padding: 0 20vw;
+  }
+}
 .comments__form-avatar, .comment__avatar {
   height: 2.25rem;
   width: 2.25rem;
@@ -599,6 +604,14 @@ body {
     min-height: 3rem;
     padding: 1rem;
   }
+}
+.comments__form-field::-moz-placeholder {
+  font-family: "avenir-next";
+  color: #323232;
+}
+.comments__form-field::placeholder {
+  font-family: "avenir-next";
+  color: #323232;
 }
 .comments__form-field:focus {
   border-color: #323232;

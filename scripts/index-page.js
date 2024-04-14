@@ -1,117 +1,17 @@
-//Daniel's code:
-//Clear comments before adding new comment:
-// const removeComments = e => {
-// 	const parent = document.getElementById('previous-comments');
-// 	parent.innerHTML = '';
-// 	const inputFullName = document.getElementsByTagName('input');
-// 	inputFullName.username.value = '';
-// 	const inputTextArea = document.getElementsByTagName('textarea');
-// 	inputTextArea.comment.value = '';
-// };
-
-//Comment handling:
-// const createPost = (event, userProfile) => {
-// 	//stop refresh:
-// 	event.preventDefault();
-
-// 	//grab form data:
-// 	const username = userProfile.username;
-// 	const postTitle = event.target.title.value;
-// 	const postContent = event.target.body.value;
-
-// 	//select parent div where post will be created:
-// 	const parentDiv = document.querySelector('.posts');
-// 	//create a new post element:
-// 	const postDiv = document.createElement('div');
-// 	//add the class:
-// 	postDiv.classList.add('posts__item');
-// 	//create the post elements as children, including classes and content:
-// 	//create the post title:
-// 	const postTitlePar = document.createElement('p');
-// 	//add the class:
-// 	postTitlePar.classList.add('posts__title');
-// 	//insert post title content:
-// 	postTitlePar.innerText = username + ' has posted: ' + postTitle;
-// 	//add post title to the new post:
-// 	postDiv.append(postTitlePar);
-
-// 	//create the post body:
-// 	const postBodyPar = document.createElement('p');
-// 	//add the class:
-// 	postBodyPar.classList.add('posts__content');
-// 	//insert post body text:
-// 	postBodyPar.innerText = postContent;
-// 	//add post body to the new post:
-// 	postDiv.append(postBodyPar);
-
-// 	//create the post's like button:
-// 	const postLikeBtn = document.createElement('button');
-// 	//add the class:
-// 	postLikeBtn.classList.add('btn--regular');
-// 	//insert button text:
-// 	postLikeBtn.innerText = 'Like';
-// 	//add like button to the new post:
-// 	postDiv.append(postLikeBtn);
-
-// 	//add the new post element to the parent div:
-// 	parentDiv.prepend(postDiv);
-// };
-
-// //DOM event to run createPost function on click of 'post' button:
-// const postButtonElement = document.querySelector('.start-post-user__text');
-
-// postButtonElement.addEventListener('submit', event => {
-// 	createPost(event, userProfile);
-// 	//clear the input fields:
-// 	document.getElementById('title').value = '';
-// 	document.getElementById('body').value = '';
-// });
-
-//Hugo's code:
-// Comment creation function:
-// function createComment(comment) {
-//   // Create elements
-//   const newComment = document.createElement("div");
-//   newComment.classList.add("past-comments__container");
-
-//   const commentAvatar = document.createElement("div");
-//   commentAvatar.classList.add("past-comments__avatar");
-
-//   const commentAvatarImg = document.createElement("span");
-//   commentAvatarImg.classList.add("past-comments__avatar--avatar-img");
-//   ...
-//   const commentUsername = document.createElement("h3");
-//   commentUsername.classList.add("past-comments__user-name");
-//   commentUsername.innerText = comment.username;
-//   ...
-
-//   // Build component
-//   commentAvatar.appendChild(commentAvatarImg);
-//   commentAvatar.appendChild(commentUsername);
-
-//   ...
-
-//   newComment.appendChild(commentAvatar);
-
-//   return newComment;
-// }
-
-/////////////////////////////////////////////
-//User object:
+//User data:
 const userData = {
 	name: 'Mohan Muruge',
 	avatar: './assets/images/Mohan-muruge.jpg',
 };
 
-// Load user profile image:
+//Load user avatar:
 const loadUser = user => {
-	const commentAvatar = document.querySelector('.comments__avatar');
+	const commentAvatar = document.querySelector('.comment__avatar-img');
 	commentAvatar.setAttribute('src', user.avatar);
 };
+loadUser(userData);
 
-// loadUser(userData);
-
-//Comment array:
+//Comments array:
 const comments = [
 	{
 		name: 'Victor Pinto',
@@ -133,9 +33,68 @@ const comments = [
 	},
 ];
 
+//Comments clearing function:
+const clearAllComments = () => {
+	document.querySelector('.comments__container').innerHTML = '';
+};
+
+//Create comment element:
+const createComment = post => {
+	//create the shell of the comment:
+	const comment = document.createElement('section');
+	comment.classList.add('comment');
+
+	//create a default grey avatar:
+	const avatar = document.createElement('div');
+	avatar.classList.add('comment__avatar');
+	//add avatar image, if available:
+	if (userData.avatar) {
+		const avatarImg = document.createElement('img');
+		avatarImg.classList.add('comment__avatar-img');
+		avatarImg.setAttribute('src', userData.avatar);
+		avatarImg.setAttribute('alt', 'a user avatar');
+		avatar.append(avatarImg);
+	}
+	comment.append(avatar);
+
+	//create comment content wrapper:
+	const wrapper = document.createElement('div');
+	wrapper.classList.add('comment__wrapper');
+
+	//create comment header (name and date), and append to wrapper:
+	const header = document.createElement('div');
+	header.classList.add('comment__header');
+
+	const username = document.createElement('h3');
+	username.classList.add('comment__name');
+	username.innerText = post.name;
+	header.append(username);
+
+	const date = document.createElement('p');
+	date.classList.add('comment__date');
+	date.innerText = post.timestamp;
+	header.append(date);
+
+	wrapper.append(header);
+
+	//create and append comment message:
+	const message = document.createElement('p');
+	message.classList.add('comment__body');
+	message.innerText = post.text;
+	wrapper.append(message);
+
+	//add wrapper to comment:
+	comment.append(wrapper);
+
+	return comment;
+};
+
 //Handle comment submission:
+//identify the submit button:
 const formSubmitBtn = document.getElementById('comment-form-submit');
-formSubmitBtn.addEventListener('click', () => {
+formSubmitBtn.addEventListener('click', event => {
+	//prevent reload:
+	event.preventDefault();
 	//grab form data:
 	const name = document.getElementById('comment-name');
 	const text = document.getElementById('comment-text');
@@ -146,30 +105,24 @@ formSubmitBtn.addEventListener('click', () => {
 	const day = String(today.getDate()).padStart(2, '0');
 	const year = today.getFullYear();
 
-	//create new comment object:
+	//create new comment object and add to comment array:
 	const newComment = {
 		name: name.value,
 		timestamp: `${month}/${day}/${year}`,
 		text: text.value,
 	};
-
-	//add new object to array:
 	comments.unshift(newComment);
 
-	//empty form fields:
+	//empty form fields, and clear old comments:
 	name.value = '';
 	text.value = '';
+	clearAllComments();
+
+	//comment container:
+	const container = document.querySelector('.comments__container');
+
+	//generate new comments:
+	for (post of comments) {
+		container.append(createComment(post));
+	}
 });
-
-//Clear comments section:
-const clearAllComments = () => {
-	document.querySelector('.comments__container').innerHTML = '';
-};
-
-//Create a new comment:
-const createComment = () => {};
-
-//Generate all comments:
-for (comment of comments) {
-	createComment(comment);
-}

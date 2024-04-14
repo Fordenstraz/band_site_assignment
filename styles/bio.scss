@@ -230,6 +230,10 @@
 		justify-content: space-between;
 		padding-bottom: 1rem;
 		border-bottom: solid 0.063rem colours.$secondary_med;
+
+		@include mixins.desktop {
+			padding: 0 20vw;
+		}
 	}
 
 	&__form-avatar {
@@ -281,6 +285,11 @@
 		@include mixins.tablet {
 			min-height: 3rem;
 			padding: 1rem;
+		}
+
+		&::placeholder {
+			font-family: 'avenir-next';
+			color: colours.$primary_dark;
 		}
 
 		&:focus {
