@@ -158,7 +158,7 @@ const buildShowsSection = array => {
 	container.append(headingRow);
 
 	//generate show listings:
-	for (show of array) {
+	for (let show of array) {
 		//create div to hold listing content:
 		const listing = document.createElement('article');
 		listing.classList.add('shows__listing');

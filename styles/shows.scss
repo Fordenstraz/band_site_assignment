@@ -79,6 +79,12 @@
 	@include mixins.desktop {
 		margin: 4.5rem 0 0;
 	}
+
+	&__player {
+		width: 100%;
+		height: 100%;
+		border: none;
+	}
 }
 
 .shows {
