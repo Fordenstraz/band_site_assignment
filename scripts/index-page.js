@@ -1,16 +1,12 @@
+//////////////////////
+/////DECLARATIONS/////
+/////////////////////
+
 //User data:
-const userData = {
+const user = {
 	name: 'Mohan Muruge',
 	avatar: './assets/images/Mohan-muruge.jpg',
 };
-
-//Load user avatar:
-const loadUser = user => {
-	const commentAvatar = document.querySelector('.comment__avatar-img');
-	commentAvatar.setAttribute('src', user.avatar);
-};
-loadUser(userData);
-
 //Comments array:
 const comments = [
 	{
@@ -32,13 +28,22 @@ const comments = [
 		text: `I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.`,
 	},
 ];
+//Comments container:
+const container = document.querySelector('.comments__container');
+//Load user's avatar:
+const commentAvatar = document.querySelector('.comment__avatar-img');
+commentAvatar.setAttribute('src', user.avatar);
+/////////////////////////////////////////////////////////////////////
 
-//Comments clearing function:
+///////////////////
+/////FUNCTIONS/////
+//////////////////
+
+//Comments clearer:
 const clearAllComments = () => {
 	document.querySelector('.comments__container').innerHTML = '';
 };
-
-//Create comment element:
+//Comment element creator:
 const createComment = post => {
 	//create the shell of the comment:
 	const comment = document.createElement('section');
@@ -88,39 +93,67 @@ const createComment = post => {
 
 	return comment;
 };
+//Comment section generator:
+const generateComments = () => {
+	comments.forEach(comment => {
+		container.append(createComment(comment));
+	});
+};
+/////////////////////////////////////////////////////////////////////
+
+//Initialize comments section:
+clearAllComments();
+generateComments();
 
 //Handle comment submission:
 const formSubmitBtn = document.getElementById('comment-form-submit');
 formSubmitBtn.addEventListener('click', event => {
 	//prevent reload:
 	event.preventDefault();
+
 	//grab form data:
 	const name = document.getElementById('comment-name');
 	const text = document.getElementById('comment-text');
 
-	//grab the date, and add leading 0s if necessary:
-	const today = new Date();
-	const month = String(today.getMonth() + 1).padStart(2, '0');
-	const day = String(today.getDate()).padStart(2, '0');
-	const year = today.getFullYear();
+	//check for valid inputs:
+	if (name.value && text.value) {
+		//remove any previous error classes:
+		name.classList.remove('comments__form-field--error');
+		text.classList.remove('comments__form-field--error');
 
-	//create new comment object and add to comment array:
-	const newComment = {
-		name: name.value,
-		avatar: userData.avatar,
-		timestamp: `${month}/${day}/${year}`,
-		text: text.value,
-	};
-	comments.unshift(newComment);
+		//grab the date, and add leading 0s if necessary:
+		const today = new Date();
+		const month = String(today.getMonth() + 1).padStart(2, '0');
+		const day = String(today.getDate()).padStart(2, '0');
+		const year = today.getFullYear();
 
-	//empty form fields, and clear old comments:
-	name.value = '';
-	text.value = '';
-	clearAllComments();
+		//create new comment object and add to comment array:
+		const newComment = {
+			name: name.value,
+			avatar: userData.avatar,
+			timestamp: `${month}/${day}/${year}`,
+			text: text.value,
+		};
+		comments.unshift(newComment);
 
-	//generate new comments:
-	const container = document.querySelector('.comments__container');
-	for (post of comments) {
-		container.append(createComment(post));
+		//empty form fields, and clear old comments:
+		name.value = '';
+		text.value = '';
+		clearAllComments();
+
+		//generate new comments:
+		generateComments();
+	} else {
+		//identify empty fields and apply error class:
+		if (!name.value && !text.value) {
+			name.classList.add('comments__form-field--error');
+			text.classList.add('comments__form-field--error');
+		} else if (!name.value) {
+			text.classList.remove('comments__form-field--error');
+			name.classList.add('comments__form-field--error');
+		} else if (!text.value) {
+			name.classList.remove('comments__form-field--error');
+			text.classList.add('comments__form-field--error');
+		}
 	}
 });

@@ -215,6 +215,16 @@
 		@include mixins.desktop-padding;
 	}
 
+	&__wrapper {
+		@include mixins.tablet {
+			@include mixins.further-tablet-padding;
+		}
+
+		@include mixins.desktop {
+			padding: 0 20vw;
+		}
+	}
+
 	&__header {
 		@extend %mobile__page-header;
 		margin: 1rem 0 0;
@@ -230,10 +240,6 @@
 		justify-content: space-between;
 		padding-bottom: 1rem;
 		border-bottom: solid 0.063rem colours.$secondary_med;
-
-		@include mixins.desktop {
-			padding: 0 20vw;
-		}
 	}
 
 	&__form-avatar {

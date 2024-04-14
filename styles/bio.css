@@ -531,6 +531,17 @@ body {
     padding-left: 10vw;
   }
 }
+@media (min-width: 768px) {
+  .comments__wrapper {
+    padding-right: 8vw;
+    padding-left: 8vw;
+  }
+}
+@media (min-width: 1280px) {
+  .comments__wrapper {
+    padding: 0 20vw;
+  }
+}
 .comments__header {
   margin: 1rem 0 0;
 }
@@ -548,11 +559,6 @@ body {
   justify-content: space-between;
   padding-bottom: 1rem;
   border-bottom: solid 0.063rem #e1e1e1;
-}
-@media (min-width: 1280px) {
-  .comments__form {
-    padding: 0 20vw;
-  }
 }
 .comments__form-avatar, .comment__avatar {
   height: 2.25rem;
