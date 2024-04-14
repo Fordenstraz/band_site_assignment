@@ -33,7 +33,6 @@ const container = document.querySelector('.comments__container');
 //Load user's avatar:
 const commentAvatar = document.querySelector('.comment__avatar-img');
 commentAvatar.setAttribute('src', user.avatar);
-/////////////////////////////////////////////////////////////////////
 
 ///////////////////
 /////FUNCTIONS/////
@@ -56,7 +55,7 @@ const createComment = post => {
 	if (post.avatar) {
 		const avatarImg = document.createElement('img');
 		avatarImg.classList.add('comment__avatar-img');
-		avatarImg.setAttribute('src', userData.avatar);
+		avatarImg.setAttribute('src', user.avatar);
 		avatarImg.setAttribute('alt', 'a user avatar');
 		avatar.append(avatarImg);
 	}
@@ -99,7 +98,10 @@ const generateComments = () => {
 		container.append(createComment(comment));
 	});
 };
-/////////////////////////////////////////////////////////////////////
+
+///////////////////////
+/////PAGE HANDLING/////
+///////////////////////
 
 //Initialize comments section:
 clearAllComments();
@@ -130,7 +132,7 @@ formSubmitBtn.addEventListener('click', event => {
 		//create new comment object and add to comment array:
 		const newComment = {
 			name: name.value,
-			avatar: userData.avatar,
+			avatar: user.avatar,
 			timestamp: `${month}/${day}/${year}`,
 			text: text.value,
 		};

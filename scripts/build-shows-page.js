@@ -1,4 +1,8 @@
-//ARRAY OF SHOW OBJECTS:
+//////////////////////
+/////DECLARATIONS/////
+/////////////////////
+
+//Array of shows:
 const upcomingShows = [
 	{
 		date: 'Mon Sept 09 2024',
@@ -32,9 +36,61 @@ const upcomingShows = [
 	},
 ];
 
-//MOBILE PAGE BUILDER:
+///////////////////
+/////FUNCTIONS/////
+//////////////////
+
+//Function to create parts of a show listing:
+const createMobileShowInfo = (label, data) => {
+	//create wrapper:
+	const wrapper = document.createElement('div');
+	wrapper.classList.add('listing__wrapper');
+
+	//create heading:
+	const heading = document.createElement('h3');
+	heading.classList.add('listing__header');
+	heading.innerText = label;
+
+	//identify as date or place, add value:
+	const value = document.createElement('p');
+	if (label === 'DATE') {
+		value.classList.add('listing__date');
+	} else {
+		value.classList.add('listing__place');
+	}
+	value.innerText = data;
+
+	//put content into wrapper and return:
+	wrapper.append(heading);
+	wrapper.append(value);
+	return wrapper;
+};
+
+//Function to create tablet/desktop show info:
+const createShowInfo = (label, data) => {
+	//identify as date or place, add value, return:
+	const value = document.createElement('p');
+	if (label === 'DATE') {
+		value.classList.add('listing__wrapper', 'listing__date');
+	} else {
+		value.classList.add('listing__wrapper', 'listing__place');
+	}
+	value.innerText = data;
+	return value;
+};
+
+//create just headings:
+const createShowHeadings = label => {
+	const heading = document.createElement('p');
+	heading.classList.add('listing__header');
+	heading.innerText = label;
+
+	return heading;
+};
+
+//Build mobile shows page:
 const buildMobileShowsSection = array => {
-	//refer to 'shows section':
+	//identify shows section:
 	const showsSection = document.querySelector('.shows');
 
 	//add the heading:
@@ -52,72 +108,31 @@ const buildMobileShowsSection = array => {
 		const listing = document.createElement('article');
 		listing.classList.add('shows__listing');
 
-		//create the date content:
-		const dateHeading = document.createElement('h3');
-		dateHeading.classList.add('listing__header');
-		dateHeading.innerText = 'DATE';
+		//run function to create listing parts:
+		listing.append(createMobileShowInfo('DATE', show.date));
+		listing.append(createMobileShowInfo('VENUE', show.venue));
+		listing.append(createMobileShowInfo('LOCATION', show.location));
 
-		const dateData = document.createElement('p');
-		dateData.classList.add('listing__date');
-		dateData.innerText = show.date;
-
-		const dateWrapper = document.createElement('div');
-		dateWrapper.classList.add('listing__wrapper');
-		dateWrapper.append(dateHeading);
-		dateWrapper.append(dateData);
-
-		//create the venue content:
-		const venueHeading = document.createElement('h3');
-		venueHeading.classList.add('listing__header');
-		venueHeading.innerText = 'VENUE';
-
-		const venueData = document.createElement('p');
-		venueData.classList.add('listing__place');
-		venueData.innerText = show.venue;
-
-		const venueWrapper = document.createElement('div');
-		venueWrapper.classList.add('listing__wrapper');
-		venueWrapper.append(venueHeading);
-		venueWrapper.append(venueData);
-
-		//create the location content:
-		const locationHeading = document.createElement('h3');
-		locationHeading.classList.add('listing__header');
-		locationHeading.innerText = 'LOCATION';
-
-		const locationData = document.createElement('p');
-		locationData.classList.add('listing__place');
-		locationData.innerText = show.location;
-
-		const locationWrapper = document.createElement('div');
-		locationWrapper.classList.add('listing__wrapper');
-		locationWrapper.append(locationHeading);
-		locationWrapper.append(locationData);
-
-		//create the CTA button:
+		//create and add the CTA button:
 		const ctaButton = document.createElement('button');
 		ctaButton.classList.add('cta-button');
 		ctaButton.innerText = 'BUY TICKETS';
-
-		//add all content to new listing:
-		listing.append(dateWrapper);
-		listing.append(venueWrapper);
-		listing.append(locationWrapper);
 		listing.append(ctaButton);
 
 		//add listing to container:
 		container.append(listing);
 	}
-	//add container to the parent div:
+
+	//add container to the shows section:
 	showsSection.append(container);
 };
 
-//TABLET/DESKTOP PAGE BUILDER:
+//Build tablet/desktop shows page:
 const buildShowsSection = array => {
 	//refer to 'shows section':
 	const showsSection = document.querySelector('.shows');
 
-	//add the heading:
+	//add the header:
 	const showsHeading = document.createElement('h2');
 	showsHeading.classList.add('shows__header');
 	showsHeading.innerText = 'Shows';
@@ -131,30 +146,17 @@ const buildShowsSection = array => {
 	const headingRow = document.createElement('div');
 	headingRow.classList.add('shows__headers-row');
 
-	//date:
-	const dateHeading = document.createElement('p');
-	dateHeading.classList.add('listing__header');
-	dateHeading.innerText = 'DATE';
-	headingRow.append(dateHeading);
+	//create headings:
+	headingRow.append(createShowHeadings('DATE'));
+	headingRow.append(createShowHeadings('VENUE'));
+	headingRow.append(createShowHeadings('LOCATION'));
 
-	//venue:
-	const venueHeading = document.createElement('p');
-	venueHeading.classList.add('listing__header');
-	venueHeading.innerText = 'VENUE';
-	headingRow.append(venueHeading);
-
-	//location:
-	const locationHeading = document.createElement('p');
-	locationHeading.classList.add('listing__header');
-	locationHeading.innerText = 'LOCATION';
-	headingRow.append(locationHeading);
-
-	//spacer:
+	//add spacer:
 	const spacer = document.createElement('div');
 	spacer.classList.add('listing__header');
 	headingRow.append(spacer);
 
-	//add them all to the page:
+	//add headings to container:
 	container.append(headingRow);
 
 	//generate show listings:
@@ -163,24 +165,10 @@ const buildShowsSection = array => {
 		const listing = document.createElement('article');
 		listing.classList.add('shows__listing');
 
-		//create listing elements:
-		//date:
-		const date = document.createElement('p');
-		date.classList.add('listing__wrapper', 'listing__date');
-		date.innerText = show.date;
-		listing.append(date);
-
-		//venue:
-		const venue = document.createElement('p');
-		venue.classList.add('listing__wrapper', 'listing__place');
-		venue.innerText = show.venue;
-		listing.append(venue);
-
-		//location:
-		const location = document.createElement('p');
-		location.classList.add('listing__wrapper', 'listing__place');
-		location.innerText = show.location;
-		listing.append(location);
+		//NEW REFACTORING //create listing elements:
+		listing.append(createShowInfo('DATE', show.date));
+		listing.append(createShowInfo('VENUE', show.venue));
+		listing.append(createShowInfo('LOCATION', show.location));
 
 		//button:
 		const button = document.createElement('button');
@@ -195,27 +183,35 @@ const buildShowsSection = array => {
 	showsSection.append(container);
 };
 
-//CHECK WINDOW SIZE, RUN APPROPRIATE FUNCTION:
+//Create event listener for show-selected state:
+const createSelectionTracker = () => {
+	//identify listings:
+	const showListings = document.querySelectorAll('.shows__listing');
+
+	//add selection tracker:
+	showListings.forEach(listing => {
+		listing.addEventListener('click', () => {
+			//remove selected state from previous selection:
+			const previousSelection = document.querySelector(
+				'.shows__listing--selected'
+			);
+			if (previousSelection) {
+				previousSelection.classList.remove('shows__listing--selected');
+			}
+			//apply state to new selection:
+			listing.classList.add('shows__listing--selected');
+		});
+	});
+};
+
+///////////////////////
+/////PAGE HANDLING/////
+///////////////////////
+
+//Check window size and run appropriate function:
 if (window.innerWidth < 768) {
 	buildMobileShowsSection(upcomingShows);
 } else {
 	buildShowsSection(upcomingShows);
 }
-
-//SHOW ITEM SELECTED STATE:
-const showListings = document.querySelectorAll('.shows__listing');
-
-//apply event listener to every listing element:
-showListings.forEach(listing => {
-	listing.addEventListener('click', () => {
-		//remover state from previous selection:
-		const previousSelection = document.querySelector(
-			'.shows__listing--selected'
-		);
-		if (previousSelection) {
-			previousSelection.classList.remove('shows__listing--selected');
-		}
-		//apply state to new selection:
-		listing.classList.add('shows__listing--selected');
-	});
-});
+createSelectionTracker();
