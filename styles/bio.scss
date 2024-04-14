@@ -150,6 +150,7 @@
 
 	@include mixins.desktop {
 		@include mixins.desktop-padding;
+		padding-bottom: 1rem;
 	}
 
 	&__heading {
@@ -217,78 +218,18 @@
 	&__header {
 		@extend %mobile__page-header;
 		margin: 1rem 0 0;
+
+		@include mixins.desktop {
+			@include typography.section-header;
+			margin: 2.5rem 0 1rem;
+		}
 	}
 
 	&__form {
 		display: flex;
 		justify-content: space-between;
-		border-bottom: solid 0.063rem colours.$secondary_med;
 		padding-bottom: 1rem;
-
-		@include mixins.tablet {
-			@include mixins.further-tablet-padding;
-		}
-
-		@include mixins.desktop {
-			@include mixins.further-desktop-padding;
-		}
-	}
-
-	&__form-label {
-		display: block;
-		@extend %mobile__other-text;
-		color: colours.$primary_med;
-		font-weight: 600;
-		margin: 1rem 0 0.25rem;
-	}
-
-	&__form-fields {
-		width: 82%;
-	}
-
-	&__form-field {
-		min-height: 2.25rem;
-		width: 100%;
-		padding: 0.75rem;
-		border: 0.063rem solid colours.$secondary_med;
-		border-radius: 0.25rem;
-		resize: none;
-
-		@include mixins.tablet {
-			min-height: 3rem;
-			padding: 1rem;
-		}
-
-		&--selected {
-			border-color: colours.$primary_dark;
-		}
-
-		&--error {
-			border-color: colours.$error;
-		}
-	}
-
-	&__container {
-		@include mixins.tablet {
-			@include mixins.further-tablet-padding;
-		}
-
-		@include mixins.desktop {
-			@include mixins.further-desktop-padding;
-		}
-	}
-}
-
-.comment {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	padding: 1rem 0 0.5rem;
-	border-bottom: solid 0.063rem colours.$secondary_med;
-
-	&__header {
-		display: flex;
-		justify-content: space-between;
+		border-bottom: solid 0.063rem colours.$secondary_med;
 	}
 
 	&__form-avatar {
@@ -305,8 +246,82 @@
 		}
 	}
 
+	&__form-label {
+		display: block;
+		@extend %mobile__other-text;
+		color: colours.$primary_med;
+		font-weight: 600;
+		margin: 1rem 0 0;
+	}
+
+	&__form-fields {
+		display: flex;
+		flex-direction: column;
+		width: 82%;
+
+		@include mixins.tablet {
+			width: 90%;
+		}
+
+		@include mixins.desktop {
+			width: 88%;
+		}
+	}
+
+	&__form-field {
+		min-height: 2.25rem;
+		width: 100%;
+		background-color: colours.$secondary_light;
+		padding: 0.75rem;
+		border: 0.063rem solid colours.$secondary_med;
+		border-radius: 0.25rem;
+		resize: none;
+		outline: none;
+
+		@include mixins.tablet {
+			min-height: 3rem;
+			padding: 1rem;
+		}
+
+		&:focus {
+			border-color: colours.$primary_dark;
+		}
+
+		&--error {
+			border-color: colours.$error;
+		}
+	}
+
+	&__container {
+		@include mixins.tablet {
+			@include mixins.further-tablet-padding;
+		}
+
+		@include mixins.desktop {
+			padding: 0 20vw;
+		}
+	}
+
+	&__button {
+		margin: 1.5rem 0 0.5rem;
+		align-self: flex-end;
+	}
+}
+
+.comment {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 1rem 0 0.5rem;
+	border-bottom: solid 0.063rem colours.$secondary_med;
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	&__avatar {
-		@extend .comment__form-avatar;
+		@extend .comments__form-avatar;
 		margin-top: 0;
 	}
 
