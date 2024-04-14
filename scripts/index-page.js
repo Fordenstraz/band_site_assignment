@@ -48,7 +48,7 @@ const createComment = post => {
 	const avatar = document.createElement('div');
 	avatar.classList.add('comment__avatar');
 	//add avatar image, if available:
-	if (userData.avatar) {
+	if (post.avatar) {
 		const avatarImg = document.createElement('img');
 		avatarImg.classList.add('comment__avatar-img');
 		avatarImg.setAttribute('src', userData.avatar);
@@ -90,7 +90,6 @@ const createComment = post => {
 };
 
 //Handle comment submission:
-//identify the submit button:
 const formSubmitBtn = document.getElementById('comment-form-submit');
 formSubmitBtn.addEventListener('click', event => {
 	//prevent reload:
@@ -108,6 +107,7 @@ formSubmitBtn.addEventListener('click', event => {
 	//create new comment object and add to comment array:
 	const newComment = {
 		name: name.value,
+		avatar: userData.avatar,
 		timestamp: `${month}/${day}/${year}`,
 		text: text.value,
 	};
@@ -118,10 +118,8 @@ formSubmitBtn.addEventListener('click', event => {
 	text.value = '';
 	clearAllComments();
 
-	//comment container:
-	const container = document.querySelector('.comments__container');
-
 	//generate new comments:
+	const container = document.querySelector('.comments__container');
 	for (post of comments) {
 		container.append(createComment(post));
 	}
