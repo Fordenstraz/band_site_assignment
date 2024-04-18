@@ -95,6 +95,7 @@
 	}
 
 	@include mixins.desktop {
+		padding-top: 3rem;
 		@include mixins.desktop-padding;
 		display: flex;
 		justify-content: space-between;
@@ -122,7 +123,6 @@
 
 		@include mixins.desktop {
 			padding: 0;
-			font-size: 1.75rem;
 			color: colours.$primary_dark;
 		}
 	}

@@ -36,6 +36,9 @@ const upcomingShows = [
 	},
 ];
 
+//refer to 'shows section':
+const showsSection = document.querySelector('.shows');
+
 ///////////////////
 /////FUNCTIONS/////
 //////////////////
@@ -90,9 +93,6 @@ const createShowHeadings = label => {
 
 //Build mobile shows page:
 const buildMobileShowsSection = array => {
-	//identify shows section:
-	const showsSection = document.querySelector('.shows');
-
 	//add the heading:
 	const showsHeading = document.createElement('h2');
 	showsHeading.classList.add('shows__header');
@@ -129,9 +129,6 @@ const buildMobileShowsSection = array => {
 
 //Build tablet/desktop shows page:
 const buildShowsSection = array => {
-	//refer to 'shows section':
-	const showsSection = document.querySelector('.shows');
-
 	//add the header:
 	const showsHeading = document.createElement('h2');
 	showsHeading.classList.add('shows__header');
@@ -183,6 +180,15 @@ const buildShowsSection = array => {
 	showsSection.append(container);
 };
 
+//Check window size and run appropriate function:
+const windowCheck = () => {
+	if (window.innerWidth < 768) {
+		buildMobileShowsSection(upcomingShows);
+	} else {
+		buildShowsSection(upcomingShows);
+	}
+};
+
 //Create event listener for show-selected state:
 const createSelectionTracker = () => {
 	//identify listings:
@@ -204,14 +210,23 @@ const createSelectionTracker = () => {
 	});
 };
 
+//Clear shows section:
+const clearSection = section => {
+	section.innerHTML = '';
+};
+
 ///////////////////////
 /////PAGE HANDLING/////
 ///////////////////////
 
-//Check window size and run appropriate function:
-if (window.innerWidth < 768) {
-	buildMobileShowsSection(upcomingShows);
-} else {
-	buildShowsSection(upcomingShows);
-}
+//Check window size:
+windowCheck();
+
+//Set selected state on click of show listing:
 createSelectionTracker();
+
+//Catch window resizes, and apply new function if necessary:
+window.onresize = () => {
+	clearSection(showsSection);
+	windowCheck();
+};
