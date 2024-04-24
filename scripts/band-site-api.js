@@ -11,19 +11,20 @@ class BandSiteApi {
 		this.baseUrl = `https://unit-2-project-api-25c1595833b2.herokuapp.com/`;
 	}
 
-	postComment(comment) {
+	async postComment(comment) {
 		await;
 	}
 
-	getComments() {
+	async getComments() {
+		console.log(this.baseUrl);
 		await;
 	}
 
-	getShows() {
+	async getShows() {
 		await;
 	}
 
-	deleteComment(comment) {
+	async deleteComment(comment) {
 		await;
 	}
 }

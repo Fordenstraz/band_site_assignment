@@ -7,6 +7,7 @@ const user = {
 	name: 'Mohan Muruge',
 	avatar: './assets/images/Mohan-muruge.jpg',
 };
+
 //Comments array:
 const comments = [
 	{
@@ -28,8 +29,10 @@ const comments = [
 		text: `I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.`,
 	},
 ];
+
 //Comments container:
 const container = document.querySelector('.comments__container');
+
 //Load user's avatar:
 const commentAvatar = document.querySelector('.comment__avatar-img');
 commentAvatar.setAttribute('src', user.avatar);
