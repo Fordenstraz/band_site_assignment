@@ -1,9 +1,6 @@
-//API URL: https://unit-2-project-api-25c1595833b2.herokuapp.com/
-//append to each request: ?api_key=c9a423a5-d6b3-47e5-a040-1358b3059193
+//full request URL: https://unit-2-project-api-25c1595833b2.herokuapp.com/?api_key=a3edc3bb-225f-4181-a224-00587427d2d7
 
-// AUTHENTICATION: To register with the API and get a key, make a GET request to /register.
-// You can do this with the browser and you only need to do it once. Store the key in a global variable in your website.
-// You must append ?api_key=<your_api_key_here> to each of your API request URLs (except for /register).
+const apiKey = `a3edc3bb-225f-4181-a224-00587427d2d7`;
 
 class BandSiteApi {
 	constructor(apiKey) {
@@ -12,19 +9,60 @@ class BandSiteApi {
 	}
 
 	async postComment(comment) {
-		await;
+		try {
+			await axios.post(`${this.baseUrl}comments?api_key=${this.apiKey}`);
+		} catch (error) {
+			console.log(`An error has occurred: `, error);
+		}
 	}
 
 	async getComments() {
-		console.log(this.baseUrl);
-		await;
+		try {
+			await axios.get(`${this.baseUrl}comments?api_key=${this.apiKey}`);
+		} catch (error) {
+			console.log(`An error has occurred: `, error);
+		}
 	}
 
 	async getShows() {
-		await;
+		try {
+			await axios.get(`${this.baseUrl}showdates?api_key=${this.apiKey}`);
+		} catch (error) {
+			console.log(`An error has occurred: `, error);
+		}
 	}
 
 	async deleteComment(comment) {
-		await;
+		try {
+			await axios.delete(
+				`${this.baseUrl}comments?api_key=${this.apiKey}`
+			);
+		} catch (error) {
+			console.log(`An error has occurred: `, error);
+		}
 	}
+}
+
+//Hugo's code:
+///<Option 1>
+async function getShowsData() {
+	const api = new BandSiteApi(API_KEY);
+	const newShowDates = await api.getShows();
+	return newShowDates;
+}
+
+async function renderShows() {
+	const newShowDates = await getShowsData();
+	newShowDates.forEach(show => {
+		//Code to render Shows
+	});
+}
+
+///Option 2
+async function renderShows() {
+	const api = new BandSiteApi(API_KEY);
+	const newShowDates = await api.getShows();
+	newShowDates.forEach(show => {
+		//Code to render Shows
+	});
 }
