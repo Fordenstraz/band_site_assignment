@@ -1,5 +1,6 @@
 //full request URL: https://unit-2-project-api-25c1595833b2.herokuapp.com/?api_key=a3edc3bb-225f-4181-a224-00587427d2d7
 
+//Generated API key:
 const apiKey = `a3edc3bb-225f-4181-a224-00587427d2d7`;
 
 class BandSiteApi {
@@ -10,7 +11,12 @@ class BandSiteApi {
 
 	async postComment(comment) {
 		try {
-			await axios.post(`${this.baseUrl}comments?api_key=${this.apiKey}`);
+			//set header:
+			const config = { headers: { 'Content-type': 'application/json' } };
+			await axios.post(
+				`${this.baseUrl}comments?api_key=${this.apiKey}`,
+				config
+			);
 		} catch (error) {
 			console.log(`An error has occurred: `, error);
 		}
@@ -18,7 +24,11 @@ class BandSiteApi {
 
 	async getComments() {
 		try {
-			await axios.get(`${this.baseUrl}comments?api_key=${this.apiKey}`);
+			const response = await axios.get(
+				`${this.baseUrl}comments?api_key=${this.apiKey}`
+			);
+			//get data from response:
+			return response.sort((a, b) => b.timestamp - a.timestamp); //this is an array of comment objects
 		} catch (error) {
 			console.log(`An error has occurred: `, error);
 		}
@@ -26,7 +36,11 @@ class BandSiteApi {
 
 	async getShows() {
 		try {
-			await axios.get(`${this.baseUrl}showdates?api_key=${this.apiKey}`);
+			const response = await axios.get(
+				`${this.baseUrl}showdates?api_key=${this.apiKey}`
+			);
+			//get data from response:
+			response; //this is an array of show objects
 		} catch (error) {
 			console.log(`An error has occurred: `, error);
 		}
