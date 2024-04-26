@@ -1,9 +1,7 @@
-//full request URL: https://unit-2-project-api-25c1595833b2.herokuapp.com/?api_key=a3edc3bb-225f-4181-a224-00587427d2d7
-
 //Generated API key:
-const apiKey = `a3edc3bb-225f-4181-a224-00587427d2d7`;
+export const apiKey = `a3edc3bb-225f-4181-a224-00587427d2d7`;
 
-class BandSiteApi {
+export default class BandSiteApi {
 	constructor(apiKey) {
 		this.apiKey = apiKey;
 		this.baseUrl = `https://unit-2-project-api-25c1595833b2.herokuapp.com/`;
@@ -27,7 +25,7 @@ class BandSiteApi {
 			const response = await axios.get(
 				`${this.baseUrl}comments?api_key=${this.apiKey}`
 			);
-			//get data from response:
+			//get data from response, sort newest to oldest:
 			return response.sort((a, b) => b.timestamp - a.timestamp); //this is an array of comment objects
 		} catch (error) {
 			console.log(`An error has occurred: `, error);

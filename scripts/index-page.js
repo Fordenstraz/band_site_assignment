@@ -2,6 +2,9 @@
 /////DECLARATIONS/////
 /////////////////////
 
+//
+import BandSiteApi, { apiKey } from './scripts/band-site-api.js';
+
 //User data:
 const user = {
 	name: 'Mohan Muruge',

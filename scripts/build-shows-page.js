@@ -2,39 +2,47 @@
 /////DECLARATIONS/////
 /////////////////////
 
+//
+import BandSiteApi, { apiKey } from '../scripts/band-site-api';
+
 //Array of shows:
-const upcomingShows = [
-	{
-		date: 'Mon Sept 09 2024',
-		venue: 'Ronald Lane',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Tue Sept 17 2024',
-		venue: 'Pier 3 East ',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Sat Oct 12 2024 ',
-		venue: 'View Lounge',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Sat Nov 16 2024',
-		venue: 'Hyatt Agency',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Fri Nov 29 2024',
-		venue: 'Moscow Center',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Wed Dec 18 2024 ',
-		venue: 'Press Club',
-		location: 'San Francisco, CA',
-	},
-];
+const upcomingShows = await 
+
+// const upcomingShows = [
+// 	{
+// 		date: 'Mon Sept 09 2024',
+// 		venue: 'Ronald Lane',
+// 		location: 'San Francisco, CA',
+// 	},
+// 	{
+// 		date: 'Tue Sept 17 2024',
+// 		venue: 'Pier 3 East ',
+// 		location: 'San Francisco, CA',
+// 	},
+// 	{
+// 		date: 'Sat Oct 12 2024 ',
+// 		venue: 'View Lounge',
+// 		location: 'San Francisco, CA',
+// 	},
+// 	{
+// 		date: 'Sat Nov 16 2024',
+// 		venue: 'Hyatt Agency',
+// 		location: 'San Francisco, CA',
+// 	},
+// 	{
+// 		date: 'Fri Nov 29 2024',
+// 		venue: 'Moscow Center',
+// 		location: 'San Francisco, CA',
+// 	},
+// 	{
+// 		date: 'Wed Dec 18 2024 ',
+// 		venue: 'Press Club',
+// 		location: 'San Francisco, CA',
+// 	},
+// ];
+
+//refer to 'shows section':
+const showsSection = document.querySelector('.shows');
 
 ///////////////////
 /////FUNCTIONS/////
@@ -90,9 +98,6 @@ const createShowHeadings = label => {
 
 //Build mobile shows page:
 const buildMobileShowsSection = array => {
-	//identify shows section:
-	const showsSection = document.querySelector('.shows');
-
 	//add the heading:
 	const showsHeading = document.createElement('h2');
 	showsHeading.classList.add('shows__header');
@@ -129,9 +134,6 @@ const buildMobileShowsSection = array => {
 
 //Build tablet/desktop shows page:
 const buildShowsSection = array => {
-	//refer to 'shows section':
-	const showsSection = document.querySelector('.shows');
-
 	//add the header:
 	const showsHeading = document.createElement('h2');
 	showsHeading.classList.add('shows__header');
@@ -183,6 +185,15 @@ const buildShowsSection = array => {
 	showsSection.append(container);
 };
 
+//Check window size and run appropriate function:
+const windowCheck = () => {
+	if (window.innerWidth < 768) {
+		buildMobileShowsSection(upcomingShows);
+	} else {
+		buildShowsSection(upcomingShows);
+	}
+};
+
 //Create event listener for show-selected state:
 const createSelectionTracker = () => {
 	//identify listings:
@@ -204,14 +215,23 @@ const createSelectionTracker = () => {
 	});
 };
 
+//Clear shows section:
+const clearSection = section => {
+	section.innerHTML = '';
+};
+
 ///////////////////////
 /////PAGE HANDLING/////
 ///////////////////////
 
-//Check window size and run appropriate function:
-if (window.innerWidth < 768) {
-	buildMobileShowsSection(upcomingShows);
-} else {
-	buildShowsSection(upcomingShows);
-}
+//Check window size:
+windowCheck();
+
+//Set selected state on click of show listing:
 createSelectionTracker();
+
+//Catch window resizes, and apply new function if necessary:
+window.onresize = () => {
+	clearSection(showsSection);
+	windowCheck();
+};
