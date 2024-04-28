@@ -2,44 +2,44 @@
 /////DECLARATIONS/////
 /////////////////////
 
-//
-import BandSiteApi, { apiKey } from '../scripts/band-site-api';
+//Get BandSiteApi:
+// import BandSiteApi, { apiKey } from './band-site-api';
 
-//Array of shows:
-const upcomingShows = await 
+// Array of shows:
+// const upcomingShows = await 
 
-// const upcomingShows = [
-// 	{
-// 		date: 'Mon Sept 09 2024',
-// 		venue: 'Ronald Lane',
-// 		location: 'San Francisco, CA',
-// 	},
-// 	{
-// 		date: 'Tue Sept 17 2024',
-// 		venue: 'Pier 3 East ',
-// 		location: 'San Francisco, CA',
-// 	},
-// 	{
-// 		date: 'Sat Oct 12 2024 ',
-// 		venue: 'View Lounge',
-// 		location: 'San Francisco, CA',
-// 	},
-// 	{
-// 		date: 'Sat Nov 16 2024',
-// 		venue: 'Hyatt Agency',
-// 		location: 'San Francisco, CA',
-// 	},
-// 	{
-// 		date: 'Fri Nov 29 2024',
-// 		venue: 'Moscow Center',
-// 		location: 'San Francisco, CA',
-// 	},
-// 	{
-// 		date: 'Wed Dec 18 2024 ',
-// 		venue: 'Press Club',
-// 		location: 'San Francisco, CA',
-// 	},
-// ];
+const upcomingShows = [
+	{
+		date: 'Mon Sept 09 2024',
+		venue: 'Ronald Lane',
+		location: 'San Francisco, CA',
+	},
+	{
+		date: 'Tue Sept 17 2024',
+		venue: 'Pier 3 East ',
+		location: 'San Francisco, CA',
+	},
+	{
+		date: 'Sat Oct 12 2024 ',
+		venue: 'View Lounge',
+		location: 'San Francisco, CA',
+	},
+	{
+		date: 'Sat Nov 16 2024',
+		venue: 'Hyatt Agency',
+		location: 'San Francisco, CA',
+	},
+	{
+		date: 'Fri Nov 29 2024',
+		venue: 'Moscow Center',
+		location: 'San Francisco, CA',
+	},
+	{
+		date: 'Wed Dec 18 2024 ',
+		venue: 'Press Club',
+		location: 'San Francisco, CA',
+	},
+];
 
 //refer to 'shows section':
 const showsSection = document.querySelector('.shows');
@@ -110,7 +110,7 @@ const buildMobileShowsSection = array => {
 	//generate show listings:
 	for (let show of array) {
 		//create div to hold listing content:
-		const listing = document.createElement('article');
+		const listing = document.createElement('div');
 		listing.classList.add('shows__listing');
 
 		//run function to create listing parts:
@@ -164,10 +164,10 @@ const buildShowsSection = array => {
 	//generate show listings:
 	for (let show of array) {
 		//create div to hold listing content:
-		const listing = document.createElement('article');
+		const listing = document.createElement('div');
 		listing.classList.add('shows__listing');
 
-		//NEW REFACTORING //create listing elements:
+		//create listing elements:
 		listing.append(createShowInfo('DATE', show.date));
 		listing.append(createShowInfo('VENUE', show.venue));
 		listing.append(createShowInfo('LOCATION', show.location));
@@ -217,7 +217,9 @@ const createSelectionTracker = () => {
 
 //Clear shows section:
 const clearSection = section => {
-	section.innerHTML = '';
+	for (let child of section.children) {
+		container.removeChild(child);
+	}
 };
 
 ///////////////////////
