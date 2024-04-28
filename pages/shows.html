@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8">
 		<meta
 			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
+			content="width=device-width, initial-scale=1.0">
+
+		<!-- Import Axios: -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- Import  styles: -->
 		<link
 			rel="stylesheet"
-			href="../styles/shows.css" />
+			href="../styles/shows.css">
 
 		<title>Bandsite - Shows</title>
 	</head>
@@ -20,7 +24,7 @@
 					href="../index.html">
 					<img
 						src="../assets/logos/Logo-bandsite.svg"
-						alt="A logo that says bandsite in uppercase letters." />
+						alt="A logo that says bandsite in uppercase letters.">
 				</a>
 
 				<div class="nav__list">
@@ -48,14 +52,14 @@
 						</h1>
 					</div>
 
-					<article class="soundcloud-widget">
+					<div class="soundcloud-widget">
 						<iframe
 							class="soundcloud-widget__player"
 							title="soundcloud music player"
 							allow="autoplay"
 							src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/256054240&color=%23c027b2&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
 						</iframe>
-					</article>
+					</div>
 				</div>
 			</section>
 		</header>
@@ -74,7 +78,7 @@
 						<img
 							class="footer__social-icon"
 							src="../assets/icons/Icon-instagram.svg"
-							alt="a logo that links to instagram" />
+							alt="a logo that links to instagram">
 					</a>
 
 					<!-- FACEBOOK -->
@@ -84,7 +88,7 @@
 						<img
 							class="footer__social-icon"
 							src="../assets/icons/Icon-facebook.svg"
-							alt="a logo that links to facebook" />
+							alt="a logo that links to facebook">
 					</a>
 
 					<!-- TWITTER -->
@@ -94,7 +98,7 @@
 						<img
 							class="footer__social-icon"
 							src="../assets/icons/Icon-twitter.svg"
-							alt="a logo that links to  twitter" />
+							alt="a logo that links to  twitter">
 					</a>
 				</div>
 			</section>
@@ -149,16 +153,13 @@
 				<img
 					class="footer__logo-image"
 					src="../assets/logos/Logo-bandsite.svg"
-					alt="A logo that says bandsite in uppercase letters." />
+					alt="A logo that says bandsite in uppercase letters.">
 			</a>
 
 			<p class="footer__copyright">
 				Copyright The Bees Knees &copy; 2023 All Rights Reserved
 			</p>
 		</footer>
-
-		//Import Axios:
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 		<script
 			src="../scripts/build-shows-page.js"
