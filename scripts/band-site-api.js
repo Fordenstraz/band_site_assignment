@@ -11,8 +11,10 @@ export default class BandSiteApi {
 		try {
 			//set header:
 			const config = { headers: { 'Content-type': 'application/json' } };
+
 			await axios.post(
 				`${this.baseUrl}comments?api_key=${this.apiKey}`,
+				comment,
 				config
 			);
 		} catch (error) {
@@ -25,8 +27,9 @@ export default class BandSiteApi {
 			const response = await axios.get(
 				`${this.baseUrl}comments?api_key=${this.apiKey}`
 			);
-			//get data from response, sort newest to oldest:
-			return response.sort((a, b) => b.timestamp - a.timestamp); //this is an array of comment objects
+			//get array of comment objects from response, sort newest to oldest:
+			return response.data.sort((a, b) => b.timestamp - a.timestamp);
+
 		} catch (error) {
 			console.log(`An error has occurred: `, error);
 		}
@@ -38,43 +41,9 @@ export default class BandSiteApi {
 				`${this.baseUrl}showdates?api_key=${this.apiKey}`
 			);
 			//get data from response:
-			response; //this is an array of show objects
+			return response.data;
 		} catch (error) {
 			console.log(`An error has occurred: `, error);
 		}
 	}
-
-	async deleteComment(comment) {
-		try {
-			await axios.delete(
-				`${this.baseUrl}comments?api_key=${this.apiKey}`
-			);
-		} catch (error) {
-			console.log(`An error has occurred: `, error);
-		}
-	}
-}
-
-//Hugo's code:
-///<Option 1>
-async function getShowsData() {
-	const api = new BandSiteApi(API_KEY);
-	const newShowDates = await api.getShows();
-	return newShowDates;
-}
-
-async function renderShows() {
-	const newShowDates = await getShowsData();
-	newShowDates.forEach(show => {
-		//Code to render Shows
-	});
-}
-
-///Option 2
-async function renderShows() {
-	const api = new BandSiteApi(API_KEY);
-	const newShowDates = await api.getShows();
-	newShowDates.forEach(show => {
-		//Code to render Shows
-	});
 }

@@ -2,8 +2,12 @@
 /////DECLARATIONS/////
 /////////////////////
 
-//
-import BandSiteApi, { apiKey } from './scripts/band-site-api.js';
+//Bandsite API:
+import BandSiteApi, { apiKey } from './band-site-api.js';
+const commentsApi = new BandSiteApi(apiKey);
+
+//Comments container:
+const container = document.querySelector('.comments__container');
 
 //User data:
 const user = {
@@ -11,43 +15,37 @@ const user = {
 	avatar: './assets/images/Mohan-muruge.jpg',
 };
 
-//Comments array:
-const comments = [
-	{
-		name: 'Victor Pinto',
-		avatar: null,
-		timestamp: '11/02/2023',
-		text: 'This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.',
-	},
-	{
-		name: 'Christina Cabrera',
-		avatar: null,
-		timestamp: '10/28/2023',
-		text: 'I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.',
-	},
-	{
-		name: 'Isaac Tadesse',
-		avatar: null,
-		timestamp: '10/20/2023',
-		text: `I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.`,
-	},
-];
-
-//Comments container:
-const container = document.querySelector('.comments__container');
-
 //Load user's avatar:
-const commentAvatar = document.querySelector('.comment__avatar-img');
-commentAvatar.setAttribute('src', user.avatar);
+document.querySelector('.comment__avatar-img').src =  user.avatar;
+
+///Form submit button:
+const formSubmitBtn = document.getElementById('comment-form-submit');
 
 ///////////////////
 /////FUNCTIONS/////
 //////////////////
 
-//Comments clearer:
+//Submit new comment to API:
+const sendComment = async (comment) => {
+	await commentsApi.postComment(comment);
+}
+
+//Clear old comments:
 const clearAllComments = () => {
-	document.querySelector('.comments__container').innerHTML = '';
+	while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
 };
+
+//Format timestamps from epoch to MM/DD/YYYY:
+const formatTimestamp = timestamp => {
+    const date = new Date(timestamp);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+};
+
 //Comment element creator:
 const createComment = post => {
 	//create the shell of the comment:
@@ -82,7 +80,8 @@ const createComment = post => {
 
 	const date = document.createElement('p');
 	date.classList.add('comment__date');
-	date.innerText = post.timestamp;
+	const readableDate = formatTimestamp(post.timestamp);
+	date.innerText = readableDate;
 	header.append(date);
 
 	wrapper.append(header);
@@ -90,7 +89,7 @@ const createComment = post => {
 	//create and append comment message:
 	const message = document.createElement('p');
 	message.classList.add('comment__body');
-	message.innerText = post.text;
+	message.innerText = post.comment;
 	wrapper.append(message);
 
 	//add wrapper to comment:
@@ -98,8 +97,14 @@ const createComment = post => {
 
 	return comment;
 };
+
 //Comment section generator:
-const generateComments = () => {
+const generateCommentsSection = async () => {
+	//Clear old comments:
+	clearAllComments();
+	//Get comments from API:
+	let comments = await commentsApi.getComments();
+	//Add comments to page:
 	comments.forEach(comment => {
 		container.append(createComment(comment));
 	});
@@ -110,12 +115,10 @@ const generateComments = () => {
 ///////////////////////
 
 //Initialize comments section:
-clearAllComments();
-generateComments();
+generateCommentsSection();
 
 //Handle comment submission:
-const formSubmitBtn = document.getElementById('comment-form-submit');
-formSubmitBtn.addEventListener('click', event => {
+formSubmitBtn.addEventListener('click', async event => {
 	//prevent reload:
 	event.preventDefault();
 
@@ -129,28 +132,20 @@ formSubmitBtn.addEventListener('click', event => {
 		name.classList.remove('comments__form-field--error');
 		text.classList.remove('comments__form-field--error');
 
-		//grab the date, and add leading 0s if necessary:
-		const today = new Date();
-		const month = String(today.getMonth() + 1).padStart(2, '0');
-		const day = String(today.getDate()).padStart(2, '0');
-		const year = today.getFullYear();
-
-		//create new comment object and add to comment array:
+		//create new comment object, and send it to the database:
 		const newComment = {
-			name: name.value,
-			avatar: user.avatar,
-			timestamp: `${month}/${day}/${year}`,
-			text: text.value,
+			"name": name.value,
+			"comment": text.value,
 		};
-		comments.unshift(newComment);
+		await sendComment(newComment);
 
 		//empty form fields, and clear old comments:
 		name.value = '';
 		text.value = '';
-		clearAllComments();
 
 		//generate new comments:
-		generateComments();
+		await generateCommentsSection();
+
 	} else {
 		//identify empty fields and apply error class:
 		if (!name.value && !text.value) {
