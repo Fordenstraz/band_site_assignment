@@ -395,8 +395,10 @@ body {
     justify-content: space-between;
   }
 }
-.shows__container {
-  padding-bottom: 1rem;
+@media (min-width: 768px) {
+  .shows__container {
+    padding-bottom: 1rem;
+  }
 }
 @media (min-width: 1280px) {
   .shows__container {

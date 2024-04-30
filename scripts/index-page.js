@@ -37,7 +37,7 @@ const clearAllComments = () => {
     }
 };
 
-//Format timestamps from epoch to MM/DD/YYYY:
+//Format timestamps from epoch to 'MM/DD/YYYY':
 const formatTimestamp = timestamp => {
     const date = new Date(timestamp);
     const month = String(date.getMonth() + 1).padStart(2, '0');

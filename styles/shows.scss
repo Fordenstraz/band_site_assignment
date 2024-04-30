@@ -101,7 +101,9 @@
 	}
 
 	&__container {
-		padding-bottom: 1rem;
+		@include mixins.tablet {
+			padding-bottom: 1rem;
+		}
 
 		@include mixins.desktop {
 			width: 80%;
