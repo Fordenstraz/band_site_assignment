@@ -3,50 +3,38 @@
 /////////////////////
 
 //Get BandSiteApi:
-// import BandSiteApi, { apiKey } from './band-site-api';
-
-// Array of shows:
-// const upcomingShows = await 
-
-const upcomingShows = [
-	{
-		date: 'Mon Sept 09 2024',
-		venue: 'Ronald Lane',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Tue Sept 17 2024',
-		venue: 'Pier 3 East ',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Sat Oct 12 2024 ',
-		venue: 'View Lounge',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Sat Nov 16 2024',
-		venue: 'Hyatt Agency',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Fri Nov 29 2024',
-		venue: 'Moscow Center',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Wed Dec 18 2024 ',
-		venue: 'Press Club',
-		location: 'San Francisco, CA',
-	},
-];
+import BandSiteApi, { apiKey } from './band-site-api.js';
+const showListingsApi = new BandSiteApi(apiKey);
 
 //refer to 'shows section':
 const showsSection = document.querySelector('.shows');
 
+//Months of the year (for timestamp):
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 ///////////////////
 /////FUNCTIONS/////
 //////////////////
+
+//Get upcoming show data from API:
+const getShowData = async () => {
+	const showListingData = await showListingsApi.getShows();
+	return showListingData;
+}
+
+//Format timestamps from epoch to 'day, month, date, year':
+const formatTimestampToDate = timestamp => {
+
+	//create date from timestamp:
+    const eventDate = new Date(timestamp);
+
+    const day = eventDate.toLocaleString('en-US', { weekday: 'short', timeZone: 'UTC' });
+    const month = months[eventDate.getMonth()];
+	const date = ('0' + eventDate.getUTCDate()).slice(-2);
+    const year = eventDate.getFullYear();
+
+    return `${day} ${month} ${date} ${year}`;
+};
 
 //Function to create parts of a show listing:
 const createMobileShowInfo = (label, data) => {
@@ -106,6 +94,7 @@ const buildMobileShowsSection = array => {
 
 	//create listings container:
 	const container = document.createElement('div');
+	container.classList.add('shows__container');
 
 	//generate show listings:
 	for (let show of array) {
@@ -114,8 +103,8 @@ const buildMobileShowsSection = array => {
 		listing.classList.add('shows__listing');
 
 		//run function to create listing parts:
-		listing.append(createMobileShowInfo('DATE', show.date));
-		listing.append(createMobileShowInfo('VENUE', show.venue));
+		listing.append(createMobileShowInfo('DATE', formatTimestampToDate(show.date)));
+		listing.append(createMobileShowInfo('VENUE', show.place));
 		listing.append(createMobileShowInfo('LOCATION', show.location));
 
 		//create and add the CTA button:
@@ -168,8 +157,8 @@ const buildShowsSection = array => {
 		listing.classList.add('shows__listing');
 
 		//create listing elements:
-		listing.append(createShowInfo('DATE', show.date));
-		listing.append(createShowInfo('VENUE', show.venue));
+		listing.append(createShowInfo('DATE', formatTimestampToDate(show.date)));
+		listing.append(createShowInfo('VENUE', show.place));
 		listing.append(createShowInfo('LOCATION', show.location));
 
 		//button:
@@ -186,11 +175,14 @@ const buildShowsSection = array => {
 };
 
 //Check window size and run appropriate function:
-const windowCheck = () => {
+const windowCheck = async () => {
+	//API call for show data:
+	const showData = await getShowData();
+	//Check window:
 	if (window.innerWidth < 768) {
-		buildMobileShowsSection(upcomingShows);
+		buildMobileShowsSection(showData);
 	} else {
-		buildShowsSection(upcomingShows);
+		buildShowsSection(showData);
 	}
 };
 
@@ -217,16 +209,16 @@ const createSelectionTracker = () => {
 
 //Clear shows section:
 const clearSection = section => {
-	for (let child of section.children) {
-		container.removeChild(child);
-	}
+	while (section.firstChild) {
+        section.removeChild(container.firstChild);
+    }
 };
 
 ///////////////////////
 /////PAGE HANDLING/////
 ///////////////////////
 
-//Check window size:
+//Check window size, and call API for show listings:
 windowCheck();
 
 //Set selected state on click of show listing:
