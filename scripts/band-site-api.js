@@ -13,10 +13,7 @@ export default class BandSiteApi {
 			const config = { headers: { 'Content-type': 'application/json' } };
 
 			await axios.post(
-				`${this.baseUrl}comments?api_key=${this.apiKey}`,
-				comment,
-				config
-			);
+				`${this.baseUrl}comments?api_key=${this.apiKey}`, comment, config);
 		} catch (error) {
 			console.log(`An error has occurred: `, error);
 		}

@@ -201,8 +201,10 @@ const windowCheck = async () => {
 	const showData = await getShowData();
 	//Check window:
 	if (window.innerWidth < 768) {
+		clearSection(showsSection);
 		buildMobileShowsSection(showData);
 	} else {
+		clearSection(showsSection);
 		buildShowsSection(showData);
 		createSelectionTracker();
 	}
@@ -210,8 +212,8 @@ const windowCheck = async () => {
 
 //Clear shows section:
 const clearSection = section => {
-	while (section.firstChild) {
-        section.removeChild(container.firstChild);
+    while (section.firstChild) {
+        section.removeChild(section.firstChild);
     }
 };
 
@@ -223,7 +225,6 @@ const clearSection = section => {
 windowCheck();
 
 //Catch window resizes, and apply new function if necessary:
-window.onresize = () => {
-	clearSection(showsSection);
-	windowCheck();
-};
+window.addEventListener('resize', () => {
+	windowCheck()
+});
