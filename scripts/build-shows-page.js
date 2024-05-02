@@ -174,18 +174,6 @@ const buildShowsSection = array => {
 	showsSection.append(container);
 };
 
-//Check window size and run appropriate function:
-const windowCheck = async () => {
-	//API call for show data:
-	const showData = await getShowData();
-	//Check window:
-	if (window.innerWidth < 768) {
-		buildMobileShowsSection(showData);
-	} else {
-		buildShowsSection(showData);
-	}
-};
-
 //Create event listener for show-selected state:
 const createSelectionTracker = () => {
 	//identify listings:
@@ -207,6 +195,19 @@ const createSelectionTracker = () => {
 	});
 };
 
+//Check window size and run appropriate function:
+const windowCheck = async () => {
+	//API call for show data:
+	const showData = await getShowData();
+	//Check window:
+	if (window.innerWidth < 768) {
+		buildMobileShowsSection(showData);
+	} else {
+		buildShowsSection(showData);
+		createSelectionTracker();
+	}
+};
+
 //Clear shows section:
 const clearSection = section => {
 	while (section.firstChild) {
@@ -220,9 +221,6 @@ const clearSection = section => {
 
 //Check window size, and call API for show listings:
 windowCheck();
-
-//Set selected state on click of show listing:
-createSelectionTracker();
 
 //Catch window resizes, and apply new function if necessary:
 window.onresize = () => {
