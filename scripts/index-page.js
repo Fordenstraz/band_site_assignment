@@ -9,6 +9,9 @@ const commentsApi = new BandSiteApi(apiKey);
 //Comments container:
 const container = document.querySelector('.comments__container');
 
+///Form submit button:
+const formSubmitBtn = document.getElementById('comment-form-submit');
+
 //User data:
 const user = {
 	name: 'Mohan Muruge',
@@ -17,9 +20,6 @@ const user = {
 
 //Load user's avatar:
 document.querySelector('.comment__avatar-img').src =  user.avatar;
-
-///Form submit button:
-const formSubmitBtn = document.getElementById('comment-form-submit');
 
 ///////////////////
 /////FUNCTIONS/////
@@ -37,7 +37,7 @@ const clearAllComments = () => {
     }
 };
 
-//Format timestamps from epoch to 'MM/DD/YYYY':
+//Format timestamps from epoch, to 'MM/DD/YYYY':
 const formatTimestamp = timestamp => {
     const date = new Date(timestamp);
     const month = String(date.getMonth() + 1).padStart(2, '0');
