@@ -102,7 +102,9 @@
 	}
 
 	&__container {
-		padding-bottom: 1rem;
+		@include mixins.tablet {
+			padding-bottom: 1rem;
+		}
 
 		@include mixins.desktop {
 			width: 80%;
@@ -143,8 +145,12 @@
 			padding: 1rem;
 		}
 
+		&:hover {
+			background-color: colours.$secondary_light;
+		}
+
 		&--selected {
-			background-color: colours.$secondary_med;
+			background-color: colours.$secondary_med !important;
 		}
 	}
 

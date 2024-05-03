@@ -2,46 +2,39 @@
 /////DECLARATIONS/////
 /////////////////////
 
-//Array of shows:
-const upcomingShows = [
-	{
-		date: 'Mon Sept 09 2024',
-		venue: 'Ronald Lane',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Tue Sept 17 2024',
-		venue: 'Pier 3 East ',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Sat Oct 12 2024 ',
-		venue: 'View Lounge',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Sat Nov 16 2024',
-		venue: 'Hyatt Agency',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Fri Nov 29 2024',
-		venue: 'Moscow Center',
-		location: 'San Francisco, CA',
-	},
-	{
-		date: 'Wed Dec 18 2024 ',
-		venue: 'Press Club',
-		location: 'San Francisco, CA',
-	},
-];
+//Get BandSiteApi:
+import BandSiteApi, { apiKey } from './band-site-api.js';
+const showListingsApi = new BandSiteApi(apiKey);
 
 //refer to 'shows section':
 const showsSection = document.querySelector('.shows');
 
+//Months of the year (for timestamp):
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 ///////////////////
 /////FUNCTIONS/////
 //////////////////
+
+//Get upcoming show data from API:
+const getShowData = async () => {
+	const showListingData = await showListingsApi.getShows();
+	return showListingData;
+}
+
+//Format timestamps from epoch to 'day, month, date, year':
+const formatTimestampToDate = timestamp => {
+
+	//create date from timestamp:
+    const eventDate = new Date(timestamp);
+
+    const day = eventDate.toLocaleString('en-US', { weekday: 'short', timeZone: 'UTC' });
+    const month = months[eventDate.getMonth()];
+	const date = ('0' + eventDate.getUTCDate()).slice(-2);
+    const year = eventDate.getFullYear();
+
+    return `${day} ${month} ${date} ${year}`;
+};
 
 //Function to create parts of a show listing:
 const createMobileShowInfo = (label, data) => {
@@ -101,16 +94,17 @@ const buildMobileShowsSection = array => {
 
 	//create listings container:
 	const container = document.createElement('div');
+	container.classList.add('shows__container');
 
 	//generate show listings:
 	for (let show of array) {
 		//create div to hold listing content:
-		const listing = document.createElement('article');
+		const listing = document.createElement('div');
 		listing.classList.add('shows__listing');
 
 		//run function to create listing parts:
-		listing.append(createMobileShowInfo('DATE', show.date));
-		listing.append(createMobileShowInfo('VENUE', show.venue));
+		listing.append(createMobileShowInfo('DATE', formatTimestampToDate(show.date)));
+		listing.append(createMobileShowInfo('VENUE', show.place));
 		listing.append(createMobileShowInfo('LOCATION', show.location));
 
 		//create and add the CTA button:
@@ -159,12 +153,12 @@ const buildShowsSection = array => {
 	//generate show listings:
 	for (let show of array) {
 		//create div to hold listing content:
-		const listing = document.createElement('article');
+		const listing = document.createElement('div');
 		listing.classList.add('shows__listing');
 
-		//NEW REFACTORING //create listing elements:
-		listing.append(createShowInfo('DATE', show.date));
-		listing.append(createShowInfo('VENUE', show.venue));
+		//create listing elements:
+		listing.append(createShowInfo('DATE', formatTimestampToDate(show.date)));
+		listing.append(createShowInfo('VENUE', show.place));
 		listing.append(createShowInfo('LOCATION', show.location));
 
 		//button:
@@ -210,23 +204,36 @@ const createSelectionTracker = () => {
 	});
 };
 
+//Check window size and run appropriate function:
+const windowCheck = async () => {
+	//API call for show data:
+	const showData = await getShowData();
+	//Check window:
+	if (window.innerWidth < 768) {
+		clearSection(showsSection);
+		buildMobileShowsSection(showData);
+	} else {
+		clearSection(showsSection);
+		buildShowsSection(showData);
+		createSelectionTracker();
+	}
+};
+
 //Clear shows section:
 const clearSection = section => {
-	section.innerHTML = '';
+    while (section.firstChild) {
+        section.removeChild(section.firstChild);
+    }
 };
 
 ///////////////////////
 /////PAGE HANDLING/////
 ///////////////////////
 
-//Check window size:
+//Check window size, and call API for show listings:
 windowCheck();
 
-//Set selected state on click of show listing:
-createSelectionTracker();
-
 //Catch window resizes, and apply new function if necessary:
-window.onresize = () => {
-	clearSection(showsSection);
-	windowCheck();
-};
+window.addEventListener('resize', () => {
+	windowCheck()
+});

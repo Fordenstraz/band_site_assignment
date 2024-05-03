@@ -13,3 +13,4 @@ assets/copyDeck
 
 ### VSCODE SETTINGS ###
 *.vscode
+.prettierrc

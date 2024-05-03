@@ -2,13 +2,17 @@
 
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8">
 		<meta
 			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
+			content="width=device-width, initial-scale=1.0">
+
+		<!-- Import Axios: -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- Import  styles: -->
 		<link
 			rel="stylesheet"
-			href="./styles/bio.css" />
+			href="./styles/bio.css">
 
 		<title>Band Site - Biography</title>
 	</head>
@@ -21,7 +25,7 @@
 					href="#">
 					<img
 						src="./assets/logos/Logo-bandsite.svg"
-						alt="A logo that says bandsite in uppercase letters." />
+						alt="A logo that says bandsite in uppercase letters.">
 				</a>
 
 				<div class="nav__list">
@@ -106,47 +110,47 @@
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-1.jpg"
-						alt="An image where you can see the heads of crowd members enjoying the show." />
+						alt="An image where you can see the heads of crowd members enjoying the show.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-2.jpg"
-						alt="An image of a young woman with her hands in the air, backlit by stage lights." />
+						alt="An image of a young woman with her hands in the air, backlit by stage lights.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-3.jpg"
-						alt="An image of hands raised in the air." />
+						alt="An image of hands raised in the air.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-4.jpg"
-						alt="An image of a young woman looking forward at bright stage lights." />
+						alt="An image of a young woman looking forward at bright stage lights.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-5.jpg"
-						alt="An image of confetti being shot into the air above a concert crowd." />
+						alt="An image of confetti being shot into the air above a concert crowd.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-9.jpg"
-						alt="An image of paper confetti streamers falling on a dancing crowd" />
+						alt="An image of paper confetti streamers falling on a dancing crowd">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-7.jpg"
-						alt="An image of stage lights shining through glitter, above a crowd." />
+						alt="An image of stage lights shining through glitter, above a crowd.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-8.jpg"
-						alt="An image of a DJ's hand above an audio mixer." />
+						alt="An image of a DJ's hand above an audio mixer.">
 
 					<img
 						class="gallery__photo"
 						src="./assets/images/Photo-gallery-6.jpg"
-						alt="An image of a singer, one hand holding a microphone to their mouth, the other hand reached out to the audience." />
+						alt="An image of a singer, one hand holding a microphone to their mouth, the other hand reached out to the audience.">
 				</div>
 			</section>
 
@@ -158,8 +162,8 @@
 						<div class="comments__form-avatar">
 							<img
 								class="comment__avatar-img"
-								src="null"
-								alt="a user avatar" />
+								src="./assets/images/Mohan-muruge.jpg"
+								alt="a user avatar">
 						</div>
 
 						<form class="comments__form-fields">
@@ -172,7 +176,7 @@
 								class="comments__form-field"
 								type="text"
 								id="comment-name"
-								placeholder="Enter your name" />
+								placeholder="Enter your name">
 
 							<label
 								class="comments__form-label"
@@ -213,7 +217,7 @@
 						<img
 							class="footer__social-icon"
 							src="./assets/icons/Icon-instagram.svg"
-							alt="The Instagram logo." />
+							alt="The Instagram logo.">
 					</a>
 
 					<!-- FACEBOOK -->
@@ -223,7 +227,7 @@
 						<img
 							class="footer__social-icon"
 							src="./assets/icons/Icon-facebook.svg"
-							alt="The facebook logo." />
+							alt="The facebook logo.">
 					</a>
 
 					<!-- TWITTER -->
@@ -233,7 +237,7 @@
 						<img
 							class="footer__social-icon"
 							src="./assets/icons/Icon-twitter.svg"
-							alt="The Twitter logo." />
+							alt="The Twitter logo.">
 					</a>
 				</div>
 			</section>
@@ -288,7 +292,7 @@
 				<img
 					class="footer__logo-image"
 					src="./assets/logos/Logo-bandsite.svg"
-					alt="A logo that says bandsite in uppercase letters." />
+					alt="A logo that says bandsite in uppercase letters.">
 			</a>
 
 			<p class="footer__copyright">
@@ -296,6 +300,8 @@
 			</p>
 		</footer>
 
-		<script src="./scripts/index-page.js"></script>
+		<script
+			src="./scripts/index-page.js"
+			type="module"></script>
 	</body>
 </html>
