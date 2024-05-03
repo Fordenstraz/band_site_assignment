@@ -174,15 +174,6 @@ const buildShowsSection = array => {
 	showsSection.append(container);
 };
 
-//Check window size and run appropriate function:
-const windowCheck = () => {
-	if (window.innerWidth < 768) {
-		buildMobileShowsSection(upcomingShows);
-	} else {
-		buildShowsSection(upcomingShows);
-	}
-};
-
 //Create event listener for show-selected state:
 const createSelectionTracker = () => {
 	//identify listings:
